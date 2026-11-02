@@ -1,0 +1,88 @@
+/* ========================================================
+   Exocross LMS — Mobile Application Bottom Navigation Bar
+   Visible strictly on mobile screens (< 768px)
+   ======================================================== */
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06);
+    z-index: 998;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: content-box;
+  }
+
+  /* Padding offset on main-content so content is never hidden behind bottom nav */
+  .main-content {
+    padding-bottom: 72px !important;
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    background: none;
+    border: none;
+    color: #64748b;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 4px 0;
+    gap: 3px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-nav-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 28px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .bottom-nav-indicator {
+    position: absolute;
+    bottom: -2px;
+    width: 16px;
+    height: 3px;
+    background: #0f52ba;
+    border-radius: 3px;
+  }
+
+  .bottom-nav-item.active {
+    color: #0f52ba;
+    font-weight: 700;
+  }
+
+  .bottom-nav-item.active .bottom-nav-icon-wrapper {
+    color: #0f52ba;
+    background: #eff6ff;
+  }
+
+  .bottom-nav-label {
+    letter-spacing: 0.2px;
+  }
+}

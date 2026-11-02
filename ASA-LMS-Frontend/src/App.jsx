@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./index.css";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import BottomNav from "./components/BottomNav";
 import Dashboard from "./pages/Dashboard";
 import Batches from "./Masters/Batches/Batches";
 import Tutors from "./Masters/Tutors/Tutors";
@@ -384,6 +385,12 @@ function App() {
               <StudentsReviews />
             )}
           </main>
+          <BottomNav
+            activePage={activePage}
+            setActivePage={handlePageChange}
+            onOpenMenu={() => setIsMobileSidebarOpen(true)}
+            userRole={getLoggedInUserRole()}
+          />
         </div>
       )}
     </>
