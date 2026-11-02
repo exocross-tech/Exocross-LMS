@@ -122,7 +122,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
--- 4. ISJSON function
+-- 4. ISJSON functions
 CREATE OR REPLACE FUNCTION ISJSON(txt text)
 RETURNS integer AS $$
 BEGIN
@@ -135,6 +135,20 @@ BEGIN
   EXCEPTION WHEN OTHERS THEN
     RETURN 0;
   END;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION ISJSON(jb jsonb)
+RETURNS integer AS $$
+BEGIN
+  RETURN (CASE WHEN jb IS NOT NULL THEN 1 ELSE 0 END);
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION ISJSON(j json)
+RETURNS integer AS $$
+BEGIN
+  RETURN (CASE WHEN j IS NOT NULL THEN 1 ELSE 0 END);
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
@@ -152,16 +166,81 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION FORMAT(dt timestamp without time zone, fmt text)
+-- 6. DATENAME function
+CREATE OR REPLACE FUNCTION DATENAME(part text, dt timestamp with time zone)
 RETURNS text AS $$
 BEGIN
-  IF lower(fmt) LIKE '%hh:mm%tt%' THEN
-    RETURN to_char(dt, 'HH12:MI AM');
-  ELSIF lower(fmt) LIKE '%yyyy-mm-dd%' THEN
-    RETURN to_char(dt, 'YYYY-MM-DD');
-  ELSE
-    RETURN to_char(dt, 'YYYY-MM-DD HH12:MI:SS');
+  RETURN trim(to_char(dt, 'Day'));
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION DATENAME(part text, dt timestamp without time zone)
+RETURNS text AS $$
+BEGIN
+  RETURN trim(to_char(dt, 'Day'));
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION DATENAME(part text, dt date)
+RETURNS text AS $$
+BEGIN
+  RETURN trim(to_char(dt, 'Day'));
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+-- 7. STRING_SPLIT function
+CREATE OR REPLACE FUNCTION STRING_SPLIT(str text, delim text)
+RETURNS TABLE(value text) AS $$
+BEGIN
+  IF str IS NULL OR str = '' THEN
+    RETURN;
   END IF;
+  RETURN QUERY SELECT unnest(string_to_array(str, delim));
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+-- 9. OPENJSON function
+CREATE OR REPLACE FUNCTION OPENJSON(txt text)
+RETURNS TABLE(key text, value text, type int) AS $$
+BEGIN
+  IF txt IS NULL OR txt = '' OR txt = '[]' OR txt = '{}' THEN
+    RETURN;
+  END IF;
+  BEGIN
+    IF jsonb_typeof(txt::jsonb) = 'array' THEN
+      RETURN QUERY
+      SELECT
+        (ord - 1)::text AS key,
+        elem::text AS value,
+        CASE jsonb_typeof(elem)
+          WHEN 'null' THEN 0
+          WHEN 'string' THEN 1
+          WHEN 'number' THEN 2
+          WHEN 'boolean' THEN 3
+          WHEN 'array' THEN 4
+          WHEN 'object' THEN 5
+          ELSE 1
+        END AS type
+      FROM jsonb_array_elements(txt::jsonb) WITH ORDINALITY arr(elem, ord);
+    ELSIF jsonb_typeof(txt::jsonb) = 'object' THEN
+      RETURN QUERY
+      SELECT
+        kv.key,
+        kv.value::text,
+        CASE jsonb_typeof(kv.value)
+          WHEN 'null' THEN 0
+          WHEN 'string' THEN 1
+          WHEN 'number' THEN 2
+          WHEN 'boolean' THEN 3
+          WHEN 'array' THEN 4
+          WHEN 'object' THEN 5
+          ELSE 1
+        END
+      FROM jsonb_each(txt::jsonb) kv;
+    END IF;
+  EXCEPTION WHEN OTHERS THEN
+    RETURN;
+  END;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 `;
@@ -171,13 +250,18 @@ async function main() {
   const client = await pool.connect();
   try {
     await client.query(functionsSql);
-    console.log("✅ Compatibility functions (DATEADD, DATEDIFF, GETDATE) installed successfully!");
+    console.log("✅ Compatibility functions installed successfully!");
 
-    // Test DATEADD and DATEDIFF
-    const test1 = await client.query("SELECT DATEADD('day', -1, GETDATE()) AS yesterday, DATEDIFF('month', 0, GETDATE()) AS months_since_1900");
+    // Test functions
+    const test1 = await client.query("SELECT DATENAME('dw', CURRENT_DATE) as day, DATEADD('day', -1, GETDATE()) as yest");
     console.log("Test Query Result:", test1.rows[0]);
   } catch (err) {
-    console.error("❌ Failed to install compatibility functions:", err);
+    if (err.position) {
+      const pos = parseInt(err.position, 10);
+      console.error("Error at position:", pos);
+      console.error("Around position:", functionsSql.substring(Math.max(0, pos - 50), pos + 50));
+    }
+    console.error("❌ Failed:", err.message);
   } finally {
     client.release();
     await pool.end();

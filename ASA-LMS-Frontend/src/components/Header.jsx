@@ -27,6 +27,20 @@ const Header = ({ onToggleSidebar }) => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const [unreadCount, setUnreadCount] = useState(0);
+  // User Preferred Theme state (defaults to Dark)
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("exocross_theme") || "dark"
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("exocross_theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -200,6 +214,20 @@ const Header = ({ onToggleSidebar }) => {
                 {unreadCount > 99 ? "99+" : unreadCount}{" "}
               </span>
             )}{" "}*/}
+          </button>
+
+          
+          <button
+            className="theme-toggle-btn icon-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle Dark / Light Theme"
+            title={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme"}
+          >
+            {theme === "dark" ? (
+              <Sun size={18} color="#FBBF24" />
+            ) : (
+              <Moon size={18} color="var(--text-secondary)" />
+            )}
           </button>
 
           {username && (

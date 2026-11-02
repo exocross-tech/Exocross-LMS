@@ -1,23 +1,58 @@
-:root {
+:root,
+[data-theme="dark"] {
+  --bg-main: #090d16;
+  --bg-sidebar: #0d1527;
+  --bg-card: #111c33;
+  --bg-card-hover: #172442;
+  --bg-input: #0b1326;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --accent-cyan: #3b82f6;
+  --accent-cyan-glow: rgba(59, 130, 246, 0.25);
+  --accent-red: #f87171;
+  --accent-red-bg: rgba(248, 113, 113, 0.15);
+  --accent-green: #34d399;
+  --accent-green-bg: rgba(52, 211, 153, 0.15);
+  --accent-blue: #3b82f6;
+
+  --border-color: #1e2d4a;
+  --border-light: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+  --font-family: 'Outfit', sans-serif;
+}
+
+[data-theme="light"] {
   --bg-main: #f8fafc;
   --bg-sidebar: #ffffff;
   --bg-card: #ffffff;
   --bg-card-hover: #f1f5f9;
+  --bg-input: #ffffff;
 
   --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-secondary: #334155;
   --text-muted: #64748b;
 
   --accent-cyan: #0f52ba;
   --accent-cyan-glow: rgba(15, 82, 186, 0.15);
   --accent-red: #ef4444;
   --accent-red-bg: rgba(239, 68, 68, 0.1);
+  --accent-green: #10b981;
+  --accent-green-bg: rgba(16, 185, 129, 0.1);
   --accent-blue: #0f52ba;
 
   --border-color: #e2e8f0;
-  --border-light: rgba(15, 23, 42, 0.06);
+  --border-light: rgba(15, 23, 42, 0.08);
 
-  --font-family: 'Outfit', sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -395,3 +430,85 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   overflow-wrap: break-word;
 }
 
+
+/* =====================================================
+   UNIVERSAL HIGH-CONTRAST VISIBILITY & THEME ENFORCEMENT
+   ===================================================== */
+h1, h2, h3, h4, h5, h6, .card-title, .modal-title, .page-title, .title {
+  color: var(--text-primary) !important;
+}
+
+p, span, label, td, th {
+  color: inherit;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-blue) !important;
+  box-shadow: 0 0 0 2px var(--accent-cyan-glow) !important;
+  outline: none !important;
+}
+
+.card,
+.dashboard-card,
+.stat-card,
+.table-container,
+.modal-content,
+.custom-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+table {
+  color: var(--text-primary) !important;
+}
+
+table thead th {
+  background-color: var(--bg-sidebar) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+table tbody td {
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+table tbody tr:hover td {
+  background-color: var(--bg-card-hover) !important;
+}
+
+.text-dark {
+  color: var(--text-primary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+.bg-light {
+  background-color: var(--bg-main) !important;
+}
+
+.bg-dark {
+  background-color: var(--bg-sidebar) !important;
+}

@@ -26,6 +26,45 @@ const createPool = () => {
   });
 };
 
+// Balanced parenthesis parser for SELECT TOP N -> LIMIT N
+const replaceTopWithLimit = (sql) => {
+  if (!sql || !/SELECT\s+TOP\s+\d+/i.test(sql)) {
+    return sql || "";
+  }
+  let result = "";
+  let i = 0;
+  while (i < sql.length) {
+    const match = sql.slice(i).match(/^SELECT\s+TOP\s+(\d+)\s+/i);
+    if (match) {
+      const limit = match[1];
+      i += match[0].length;
+      result += "SELECT ";
+      let depth = 0;
+      let start = i;
+      while (i < sql.length) {
+        if (sql[i] === "(") depth++;
+        else if (sql[i] === ")") {
+          if (depth === 0) break;
+          depth--;
+        } else if (sql[i] === ";" && depth === 0) {
+          break;
+        }
+        i++;
+      }
+      let body = sql.slice(start, i);
+      body = replaceTopWithLimit(body);
+      if (!/LIMIT\s+\d+\s*$/i.test(body.trim())) {
+        body = body.trim().replace(/;+$/, "") + ` LIMIT ${limit} `;
+      }
+      result += body;
+    } else {
+      result += sql[i];
+      i++;
+    }
+  }
+  return result;
+};
+
 // =====================================================
 // QUERY TRANSLATOR (T-SQL to PostgreSQL Dialect)
 // =====================================================
@@ -39,28 +78,27 @@ const translateQuery = (sqlText, inputs = {}) => {
   // 1. Strip MSSQL locking hints
   translated = translated.replace(/WITH\s*\(\s*(NOLOCK|ROWLOCK|UPDLOCK)\s*\)/gi, "");
 
-  // 2. Translate subquery (SELECT TOP (\d+) ...) to (SELECT ... LIMIT n)
-  translated = translated.replace(/\(\s*SELECT\s+TOP\s+(\d+)\s+([\s\S]*?)\)/gi, (m, limit, body) => {
-    let clean = body.trim().replace(/;+$/, "");
-    if (!/LIMIT\s+\d+/i.test(clean)) {
-      clean += ` LIMIT ${limit}`;
-    }
-    return `(SELECT ${clean})`;
+  // 2. Translate FOR JSON PATH into json_agg subquery
+  translated = translated.replace(/\(\s*SELECT\s+([\s\S]*?)\s+FOR\s+JSON\s+PATH\s*\)/gi, (m, body) => {
+    return `(SELECT COALESCE(json_agg(_sub), '[]')::text FROM (SELECT ${body}) _sub)`;
   });
 
-  // Translate top-level SELECT TOP (\d+) ...
-  let topLimit = null;
-  const topMatch = translated.match(/^\s*SELECT\s+TOP\s+(\d+)\s+/i);
-  if (topMatch) {
-    topLimit = topMatch[1];
-    translated = translated.replace(/^\s*SELECT\s+TOP\s+\d+\s+/i, "SELECT ");
-  }
+  // 3. Translate SELECT TOP (\d+) using balanced parenthesis parser
+  translated = replaceTopWithLimit(translated);
 
-  // 3. Replace common date & null functions
+  // 4. Replace common date & null functions
   translated = translated.replace(/GETDATE\(\)/gi, "CURRENT_TIMESTAMP");
   translated = translated.replace(/SYSDATETIME\(\)/gi, "CURRENT_TIMESTAMP");
   translated = translated.replace(/ISNULL\(/gi, "COALESCE(");
   translated = translated.replace(/TRY_CONVERT\s*\(\s*INT\s*,\s*([^)]+)\)/gi, "CAST($1 AS INT)");
+
+  // Translate NVARCHAR(MAX) and NVARCHAR(len) to TEXT for PostgreSQL
+  translated = translated.replace(/\bNVARCHAR\s*\(\s*(?:MAX|\d+)\s*\)/gi, "TEXT");
+  translated = translated.replace(/\bNVARCHAR\b/gi, "TEXT");
+
+  // 5. Replace string concatenation '+' with '||'
+  translated = translated.replace(/'\s*\+\s*CAST\s*\(/gi, "' || CAST(");
+  translated = translated.replace(/\)\s*\+\s*'/gi, ") || '");
 
   // Automatically quote datepart argument in DATEADD and DATEDIFF (e.g. DATEADD(day, -> DATEADD('day',)
   translated = translated.replace(/\bDATEADD\s*\(\s*(second|minute|hour|day|month|year|week)\s*,/gi, "DATEADD('$1',");
@@ -77,7 +115,56 @@ const translateQuery = (sqlText, inputs = {}) => {
     "($1 + $2)"
   );
 
-  // 4. Translate parameter bindings (@PARAM -> $1, $2, ...)
+  // 6. Translate DATENAME (e.g. DATENAME(dw, ...) -> DATENAME('dw', ...))
+  translated = translated.replace(/\bDATENAME\s*\(\s*([a-zA-Z]+)\s*,/gi, "DATENAME('$1',");
+
+  // 7. Translate OPENJSON on TUTOR_IDS with WITH clause
+  translated = translated.replace(
+    /(?:CROSS\s+APPLY\s+)?OPENJSON\s*\(\s*(?:COALESCE|ISNULL)?\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)[\s\S]*?\)\s*\)\s*WITH\s*\([\s\S]*?\)\s*([a-zA-Z0-9_]+)/gi,
+    `CROSS JOIN LATERAL (
+      SELECT
+        COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS tutorid,
+        COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS "tutorId",
+        COALESCE(elem->>'role', elem->>'ROLE') AS role
+      FROM jsonb_array_elements(
+        CASE
+          WHEN $1 IS NOT NULL AND jsonb_typeof($1::jsonb) = 'array'
+          THEN $1::jsonb
+          ELSE '[]'::jsonb
+        END
+      ) elem
+    ) $2`
+  );
+
+  translated = translated.replace(
+    /(?:CROSS\s+APPLY\s+)?OPENJSON\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)\s*\)\s*WITH\s*\([\s\S]*?\)\s*([a-zA-Z0-9_]+)/gi,
+    `CROSS JOIN LATERAL (
+      SELECT
+        COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS tutorid,
+        COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS "tutorId",
+        COALESCE(elem->>'role', elem->>'ROLE') AS role
+      FROM jsonb_array_elements(
+        CASE
+          WHEN $1 IS NOT NULL AND jsonb_typeof($1::jsonb) = 'array'
+          THEN $1::jsonb
+          ELSE '[]'::jsonb
+        END
+      ) elem
+    ) $2`
+  );
+
+  // Fallback for any other OPENJSON WITH clause
+  translated = translated.replace(
+    /(?:CROSS\s+APPLY\s+)?OPENJSON\s*\(([\s\S]+?)\)\s*WITH\s*\([\s\S]*?\)\s*([a-zA-Z0-9_]+)/gi,
+    `CROSS JOIN LATERAL OPENJSON($1) $2`
+  );
+
+  // 8. Translate general CROSS APPLY and OUTER APPLY
+  translated = translated.replace(/\bOUTER\s+APPLY\s*\(\s*([\s\S]*?)\)\s*([a-zA-Z0-9_]+)/gi, "LEFT JOIN LATERAL ($1) $2 ON TRUE");
+  translated = translated.replace(/\bOUTER\s+APPLY\s+/gi, "LEFT JOIN LATERAL ");
+  translated = translated.replace(/\bCROSS\s+APPLY\s+/gi, "CROSS JOIN LATERAL ");
+
+  // 7. Translate parameter bindings (@PARAM -> $1, $2, ...)
   const values = [];
   let paramIndex = 1;
   const paramMap = {};
@@ -95,11 +182,6 @@ const translateQuery = (sqlText, inputs = {}) => {
       }
       translated = translated.replace(regex, "$" + paramMap[key]);
     }
-  }
-
-  // If top-level TOP was stripped and no LIMIT is present, strip trailing semicolon and append LIMIT
-  if (topLimit && !/LIMIT\s+\d+\s*$/i.test(translated.trim().replace(/;+$/, ""))) {
-    translated = translated.trim().replace(/;+$/, "") + ` LIMIT ${topLimit}`;
   }
 
   return { query: translated, values };

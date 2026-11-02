@@ -44,6 +44,7 @@ router.use("/chat-rooms", chatRoomRoutes);
 router.use("/tutors", tutorRoutes);
 router.use("/course-material", courseMaterialRoutes);
 router.use("/tutorAllocation", tutorAllocationRoutes);
+router.use("/tutor-allocation", tutorAllocationRoutes);
 router.use("/student-allocation", studentAllocationRoutes);
 router.use("/notifications", notificationRoutes);
 router.use("/students", studentsRoutes);

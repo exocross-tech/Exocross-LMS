@@ -10,9 +10,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8fafc;
+  background-color: var(--bg-main, #090d16);
   font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #0f172a;
+  color: var(--text-primary, #f8fafc);
   padding: 32px 16px;
   overflow: hidden;
   box-sizing: border-box;
@@ -62,7 +62,7 @@
   max-width: 1080px;
   min-height: 640px;
   display: flex;
-  background: #ffffff;
+  background: var(--bg-card, #111c33);
   border: 1px solid #e2e8f0;
   border-radius: 24px;
   box-shadow: 
@@ -106,7 +106,7 @@
   display: inline-flex;
   align-items: center;
   max-width: 220px;
-  background: #ffffff;
+  background: var(--bg-card, #111c33);
   padding: 10px 18px;
   border-radius: 14px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -210,7 +210,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #ffffff;
+  background: var(--bg-card, #111c33);
 }
 
 .login-card {
@@ -243,14 +243,14 @@
 .login-welcome-title {
   font-size: 26px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary, #f8fafc);
   margin-bottom: 8px;
   letter-spacing: -0.5px;
 }
 
 .login-welcome-desc {
   font-size: 14px;
-  color: #64748b;
+  color: var(--text-muted, #94a3b8);
   line-height: 1.5;
 }
 
@@ -270,7 +270,7 @@
 .form-label {
   font-size: 13px;
   font-weight: 600;
-  color: #334155;
+  color: var(--text-secondary, #cbd5e1);
 }
 
 .input-container {
@@ -293,11 +293,11 @@
 .form-input {
   width: 100%;
   padding: 12px 14px 12px 42px;
-  background: #f8fafc;
+  background: var(--bg-input, #0b1326);
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   font-size: 14px;
-  color: #0f172a;
+  color: var(--text-primary, #f8fafc);
   font-family: inherit;
   transition: all 0.2s ease;
   box-sizing: border-box;
@@ -305,7 +305,7 @@
 
 .form-input:focus {
   outline: none;
-  background: #ffffff;
+  background: var(--bg-card, #111c33);
   border-color: #0f52ba;
   box-shadow: 0 0 0 3px rgba(15, 82, 186, 0.12);
 }
@@ -411,12 +411,12 @@
 .login-card-footer {
   margin-top: 28px;
   padding-top: 18px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border-color, #1e2d4a);
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
-  color: #64748b;
+  color: var(--text-muted, #94a3b8);
 }
 
 .system-status {
@@ -487,7 +487,7 @@
   }
 
   .mobile-logo-wrapper {
-    background: #ffffff;
+    background: var(--bg-card, #111c33);
     border-radius: 12px;
     padding: 8px 16px;
     display: inline-flex;
