@@ -39,11 +39,21 @@ const translateQuery = (sqlText, inputs = {}) => {
   // 1. Strip MSSQL locking hints
   translated = translated.replace(/WITH\s*\(\s*(NOLOCK|ROWLOCK|UPDLOCK)\s*\)/gi, "");
 
-  // 2. Translate SELECT TOP (\d+) ...
-  const topMatch = translated.match(/SELECT\s+TOP\s+(\d+)\s+/i);
-  const topLimit = topMatch ? topMatch[1] : null;
-  if (topLimit) {
-    translated = translated.replace(/SELECT\s+TOP\s+(\d+)\s+/i, "SELECT ");
+  // 2. Translate subquery (SELECT TOP (\d+) ...) to (SELECT ... LIMIT n)
+  translated = translated.replace(/\(\s*SELECT\s+TOP\s+(\d+)\s+([\s\S]*?)\)/gi, (m, limit, body) => {
+    let clean = body.trim().replace(/;+$/, "");
+    if (!/LIMIT\s+\d+/i.test(clean)) {
+      clean += ` LIMIT ${limit}`;
+    }
+    return `(SELECT ${clean})`;
+  });
+
+  // Translate top-level SELECT TOP (\d+) ...
+  let topLimit = null;
+  const topMatch = translated.match(/^\s*SELECT\s+TOP\s+(\d+)\s+/i);
+  if (topMatch) {
+    topLimit = topMatch[1];
+    translated = translated.replace(/^\s*SELECT\s+TOP\s+\d+\s+/i, "SELECT ");
   }
 
   // 3. Replace common date & null functions
@@ -87,9 +97,9 @@ const translateQuery = (sqlText, inputs = {}) => {
     }
   }
 
-  // If TOP was stripped and no LIMIT is present, append LIMIT
-  if (topLimit && !/LIMIT\s+\d+/i.test(translated)) {
-    translated = translated.trim() + ` LIMIT ${topLimit}`;
+  // If top-level TOP was stripped and no LIMIT is present, strip trailing semicolon and append LIMIT
+  if (topLimit && !/LIMIT\s+\d+\s*$/i.test(translated.trim().replace(/;+$/, ""))) {
+    translated = translated.trim().replace(/;+$/, "") + ` LIMIT ${topLimit}`;
   }
 
   return { query: translated, values };

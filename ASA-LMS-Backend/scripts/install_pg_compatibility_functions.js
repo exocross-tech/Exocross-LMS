@@ -121,6 +121,49 @@ BEGIN
   RETURN DATEDIFF(datepart, '1900-01-01 00:00:00+00'::timestamptz, enddate);
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
+
+-- 4. ISJSON function
+CREATE OR REPLACE FUNCTION ISJSON(txt text)
+RETURNS integer AS $$
+BEGIN
+  IF txt IS NULL OR trim(txt) = '' THEN
+    RETURN 0;
+  END IF;
+  BEGIN
+    PERFORM txt::json;
+    RETURN 1;
+  EXCEPTION WHEN OTHERS THEN
+    RETURN 0;
+  END;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+-- 5. FORMAT date function
+CREATE OR REPLACE FUNCTION FORMAT(dt timestamp with time zone, fmt text)
+RETURNS text AS $$
+BEGIN
+  IF lower(fmt) LIKE '%hh:mm%tt%' THEN
+    RETURN to_char(dt, 'HH12:MI AM');
+  ELSIF lower(fmt) LIKE '%yyyy-mm-dd%' THEN
+    RETURN to_char(dt, 'YYYY-MM-DD');
+  ELSE
+    RETURN to_char(dt, 'YYYY-MM-DD HH12:MI:SS');
+  END IF;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION FORMAT(dt timestamp without time zone, fmt text)
+RETURNS text AS $$
+BEGIN
+  IF lower(fmt) LIKE '%hh:mm%tt%' THEN
+    RETURN to_char(dt, 'HH12:MI AM');
+  ELSIF lower(fmt) LIKE '%yyyy-mm-dd%' THEN
+    RETURN to_char(dt, 'YYYY-MM-DD');
+  ELSE
+    RETURN to_char(dt, 'YYYY-MM-DD HH12:MI:SS');
+  END IF;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
 `;
 
 async function main() {
