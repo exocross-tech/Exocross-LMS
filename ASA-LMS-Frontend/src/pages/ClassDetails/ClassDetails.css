@@ -1,0 +1,481 @@
+.class-details-container {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.class-details-header {
+  margin-bottom: 22px;
+}
+
+.class-details-breadcrumb {
+  color: #00e5ff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.class-details-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.class-details-subtitle {
+  margin: 9px 0 0;
+  color: #91a4c7;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.class-details-card {
+  width: 100%;
+  background: #0b1222;
+  border: 1px solid #1d2a42;
+  border-radius: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.class-details-card-header {
+  padding: 28px 30px 26px;
+  border-bottom: none;
+}
+
+.class-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.class-details-heading svg {
+  color: #00e5ff;
+  flex-shrink: 0;
+}
+
+.class-details-heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   TABLE CONTAINER
+
+   IMPORTANT:
+   No overflow-x
+   No horizontal scrolling
+===================================================== */
+
+.class-details-table-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.class-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+
+/* =====================================================
+   COLUMN WIDTHS
+
+   Total = 100%
+===================================================== */
+
+.class-details-date-column {
+  width: 14%;
+}
+
+.class-details-day-column {
+  width: 9%;
+}
+
+.class-details-time-column {
+  width: 13%;
+}
+
+.class-details-topic-column {
+  width: 26%;
+}
+
+.class-details-tutor-column {
+  width: 20%;
+}
+
+/* =====================================================
+   JOIN COLUMN
+===================================================== */
+
+.class-details-join-column {
+  width: 18%;
+  text-align: left !important;
+}
+
+
+/* =====================================================
+   JOIN BUTTON
+===================================================== */
+
+
+.class-details-join-btn:hover {
+  background: #263957;
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.class-details-join-btn:active {
+  transform: translateY(0);
+}
+
+.class-details-join-btn span {
+  white-space: nowrap;
+}
+
+.class-details-join-btn svg {
+  color: #c8d4e8;
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   NO JOIN LINK
+===================================================== */
+
+.class-details-no-link {
+  color: #627493;
+  font-size: 14px;
+}
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.class-details-table thead tr {
+  height: 62px;
+}
+
+.class-details-table thead th {
+  padding: 0 30px;
+
+  background: transparent;
+
+  border-bottom: 1px solid #182338;
+
+  color: #7f96bd;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.class-details-table tbody tr {
+  height: 80px;
+
+  background: transparent;
+
+  transition: background 0.2s ease;
+}
+
+.class-details-table tbody tr:hover {
+  background: rgba(20, 34, 58, 0.45);
+}
+
+
+/* =====================================================
+   TABLE CELLS
+===================================================== */
+
+.class-details-table tbody td {
+  padding: 0 30px;
+
+  border-bottom: 1px solid #182338;
+
+  color: #91a4c7;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  vertical-align: middle;
+}
+
+.class-details-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   DATE & DAY
+===================================================== */
+
+.class-details-table tbody td.class-details-date-column {
+  color: #f1f5f9;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.class-details-table tbody td.class-details-day-column {
+  color: #00e5ff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.class-details-pending-link {
+  color: #64748b;
+  font-size: 13px;
+  font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+/* =====================================================
+   TIME
+===================================================== */
+
+.class-details-table tbody td.class-details-time-column {
+  color: #91a4c7;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   TOPIC
+===================================================== */
+
+.class-details-table tbody td.class-details-topic-column {
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   TUTOR
+===================================================== */
+
+.class-details-table tbody td.class-details-tutor-column {
+  color: #91a4c7;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   JOIN BUTTON
+===================================================== */
+
+.class-details-join-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 124px;
+  height: 40px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #1b2943;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.class-details-join-btn:hover {
+  background: #263957;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.class-details-join-btn:active {
+  transform: translateY(0);
+}
+
+.class-details-join-btn span {
+  white-space: nowrap;
+}
+
+.class-details-join-btn svg {
+  color: #d3dced;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   NO JOIN LINK
+===================================================== */
+
+.class-details-no-link {
+  color: #627493;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.class-details-loading {
+  min-height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #91a4c7;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.class-details-empty {
+  min-height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #91a4c7;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .class-details-table thead th,
+  .class-details-table tbody td {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .class-details-table tbody td {
+    font-size: 15px;
+  }
+
+  .class-details-join-btn {
+    min-width: 118px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .class-details-container {
+    padding: 5px 10px 30px;
+  }
+
+  .class-details-title {
+    font-size: 28px;
+  }
+
+  .class-details-subtitle {
+    font-size: 15px;
+  }
+
+  .class-details-card {
+    border-radius: 14px;
+  }
+
+  .class-details-card-header {
+    padding: 22px 18px;
+  }
+
+  .class-details-table {
+    table-layout: auto;
+  }
+
+  .class-details-table thead th,
+  .class-details-table tbody td {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .class-details-table tbody tr {
+    height: 70px;
+  }
+}

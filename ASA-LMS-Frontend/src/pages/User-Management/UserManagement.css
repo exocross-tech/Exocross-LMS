@@ -1,0 +1,2079 @@
+.bc-container,
+.batches-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bc-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bc-breadcrumb {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00f0ff;
+  text-transform: uppercase;
+}
+
+.bc-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.bc-title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bc-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.bc-subtitle {
+  font-size: 0.875rem;
+  color: #8492a6;
+  margin: 0;
+}
+
+.breadcrumb {
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.batches-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-text {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.welcome-subtext {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent-cyan);
+  color: var(--bg-main);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.batches-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.batch-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.batch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.batch-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.batch-info span {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.batch-time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.batch-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-icon-action {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-icon-action:hover {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--text-muted, #444);
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.toggle-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked+.slider {
+  background-color: var(--accent-cyan);
+}
+
+.toggle-switch input:checked+.slider:before {
+  transform: translateX(16px);
+}
+
+.batch-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roster-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.roster-labels span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent-cyan);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.batch-stats {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.stat:not(:last-child) {
+  border-right: 1px solid var(--border-color);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--accent-cyan);
+}
+
+.btn-open-roster {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-open-roster:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.batches-container .modal-overlay .modal-content,
+.modal-content {
+  width: min(1100px, 94vw) !important;
+  max-width: 1100px !important;
+  background: #0f172a;
+  border-radius: 22px;
+  padding: 28px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 35px;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 5px var(--accent-cyan-glow);
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.table-count {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.page-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.custom-table th:last-child,
+.custom-table td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.action-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.user-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Full width fields */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #aeb8c7;
+  font-weight: 500;
+}
+
+/* Inputs */
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  background: #202938;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.form-grid {
+  width: 100%;
+  max-width: 760px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 40px;
+  row-gap: 22px;
+
+  margin: 0 auto;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* React Select */
+.react-select__control {
+  background: #202938 !important;
+  border: 1px solid #374151 !important;
+  min-height: 46px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.react-select__control--is-focused {
+  border-color: #06b6d4 !important;
+  box-shadow: 0 0 0 1px #06b6d4 !important;
+}
+
+.react-select__input-container {
+  color: #fff !important;
+}
+
+.react-select__menu {
+  background: #1f2937 !important;
+}
+
+.react-select__option {
+  background: #1f2937 !important;
+  color: #fff !important;
+}
+
+.react-select__option:hover {
+  background: #00c8ff !important;
+  color: #000 !important;
+}
+
+.react-select__input-container {
+  color: #ffffff !important;
+}
+
+.react-select__menu {
+  background: #1f2937 !important;
+  border: 1px solid #374151 !important;
+}
+
+.react-select__option {
+  background: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+.react-select__option--is-focused {
+  background: #06b6d4 !important;
+  color: #000000 !important;
+}
+
+.react-select__option--is-selected {
+  background: #0891b2 !important;
+  color: #ffffff !important;
+}
+
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  padding-right: 45px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9ca3af;
+}
+
+/* Buttons */
+.modal-actions {
+  width: 100%;
+  max-width: 760px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 16px;
+
+  margin-top: 35px;
+  padding-top: 25px;
+
+  border-top: 1px solid #2f3b4d;
+}
+
+.btn-cancel {
+  min-width: 140px;
+  height: 46px;
+  background: #374151;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #4b5563;
+}
+
+.btn-primary {
+  min-width: 140px;
+  /* same as cancel */
+  height: 46px;
+  background: #06b6d4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0891b2;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions {
+    justify-content: center;
+  }
+}
+
+.user-type-select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.user-type-select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 5px var(--accent-cyan-glow);
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.status-active {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-inactive {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(148, 163, 184, 0.12);
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.user-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 18px;
+  margin-top: 10px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.batches-container .modal-overlay .modal-content,
+.modal-content {
+  max-width: 1100px !important;
+  width: min(1100px, 94vw) !important;
+}
+
+.user-type-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color, #334155);
+  border-radius: 8px;
+  background: var(--bg-main, #0f172a);
+  color: var(--text-primary, #fff);
+  font-size: 14px;
+  min-height: 44px;
+}
+
+.user-type-select:focus {
+  outline: none;
+  border-color: var(--accent-cyan, #00e5ff);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+}
+
+.modal-actions.right-align {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 98vw;
+    padding: 22px 18px 18px;
+  }
+
+  .user-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .modal-actions.right-align {
+    justify-content: stretch;
+    flex-wrap: wrap;
+  }
+
+  .modal-actions.right-align>* {
+    flex: 1 1 140px;
+  }
+}
+
+.btn-load span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.react-select__control {
+  min-height: 44px !important;
+  background: var(--bg-main, #0f172a) !important;
+  border-color: var(--border-color, #334155) !important;
+  box-shadow: none !important;
+}
+
+.react-select__control:hover {
+  border-color: var(--accent-cyan, #00e5ff) !important;
+}
+
+.react-select__menu {
+  background: var(--bg-card, #111827) !important;
+  color: #fff !important;
+  z-index: 9999;
+}
+
+.react-select__option {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+.react-select__option--is-focused {
+  background: rgba(0, 229, 255, 0.12) !important;
+}
+
+.react-select__option--is-selected {
+  background: var(--accent-cyan, #00e5ff) !important;
+  color: #001018 !important;
+}
+
+@media (max-width: 768px) {
+  .user-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    padding: 20px;
+  }
+}
+
+/* =========================================================
+   USER MANAGEMENT - ADD USER MODAL
+   COMPACT + FLEXIBLE + CENTERED
+   ========================================================= */
+
+/* =========================
+   MODAL OVERLAY
+   ========================= */
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed !important;
+
+  inset: 0 !important;
+
+  z-index: 9999 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 12px !important;
+
+  box-sizing: border-box !important;
+
+  background: rgba(2, 6, 15, 0.82) !important;
+
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+
+  /* NO SCROLL */
+  overflow: hidden !important;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.batches-container .modal-overlay .modal-content,
+.user-management-container .modal-content,
+.user-management-modal-content,
+.modal-overlay .user-management-modal-content,
+.modal-overlay .modal-content {
+  position: relative !important;
+
+  width: min(1100px, calc(100vw - 24px)) !important;
+  max-width: 1100px !important;
+  min-width: min(1100px, calc(100vw - 24px)) !important;
+  height: auto !important;
+  max-height: none !important;
+  /* remove clipping */
+
+  margin: 0 auto !important;
+
+  padding: 20px 24px 18px !important;
+
+  background: #0f172a !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  border-radius: 16px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: visible !important;
+  /* allow full content */
+
+  box-sizing: border-box !important;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.modal-overlay .modal-header {
+  width: 100% !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: space-between !important;
+
+  margin: 0 0 14px 0 !important;
+
+  padding: 0 !important;
+}
+
+.modal-overlay .modal-header h2 {
+  margin: 0 !important;
+
+  color: #f8fafc !important;
+
+  font-size: 1.35rem !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.2 !important;
+}
+
+.modal-overlay .modal-header h2::after {
+  display: none !important;
+
+  content: none !important;
+}
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.modal-overlay .batch-modal-close-btn {
+  width: 32px !important;
+
+  height: 32px !important;
+
+  min-width: 32px !important;
+
+  padding: 0 !important;
+
+  margin: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  background: rgba(255, 255, 255, 0.04) !important;
+
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+
+  border-radius: 8px !important;
+
+  color: #cbd5e1 !important;
+
+  cursor: pointer !important;
+
+  transition: all 0.2s ease !important;
+}
+
+.modal-overlay .batch-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+
+  border-color: rgba(0, 240, 255, 0.35) !important;
+
+  color: #ffffff !important;
+
+  transform: rotate(90deg);
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.modal-overlay .batch-modal-close-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+
+  color: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* =========================
+   FORM
+   ========================= */
+
+.modal-overlay .modal-content>form {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =========================
+   USER FORM
+   ========================= */
+
+.modal-overlay .user-form {
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: stretch !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =========================
+   MAIN FORM GRID
+   ========================= */
+
+/* =========================================================
+   USER FORM GRID
+   ========================================================= */
+
+.modal-overlay .user-form-grid {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr) minmax(0, 1fr) !important;
+
+  column-gap: 14px !important;
+
+  row-gap: 10px !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Full width fields */
+.modal-overlay .user-form-grid .full-width {
+  grid-column: 1 / -1 !important;
+}
+
+/* Form group */
+.modal-overlay .user-form-grid .form-group {
+  width: 100% !important;
+
+  min-width: 0 !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  gap: 4px !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+}
+
+/* Labels */
+.modal-overlay .user-form-grid .form-group label {
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  color: #cbd5e1 !important;
+
+  font-size: 0.76rem !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1.1 !important;
+}
+
+/* =========================
+   INPUTS / SELECT
+   ========================= */
+
+.modal-overlay .user-form-grid .form-group input,
+.modal-overlay .user-form-grid .form-group select,
+.modal-overlay .user-type-select {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  height: 39px !important;
+  min-height: 39px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 11px !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 7px !important;
+
+  color: #f8fafc !important;
+
+  font-size: 0.8rem !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important;
+}
+
+/* =========================
+   PLACEHOLDER
+   ========================= */
+
+.modal-overlay .user-form-grid input::placeholder {
+  color: #64748b !important;
+}
+
+/* =========================
+   FOCUS
+   ========================= */
+
+.modal-overlay .user-form-grid input:focus,
+.modal-overlay .user-form-grid select:focus,
+.modal-overlay .user-type-select:focus {
+  outline: none !important;
+
+  background: rgba(15, 23, 42, 0.95) !important;
+
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.07) !important;
+}
+
+/* =========================
+   DISABLED INPUTS
+   ========================= */
+
+.modal-overlay .user-form-grid input:disabled,
+.modal-overlay .user-form-grid select:disabled,
+.modal-overlay .user-type-select:disabled {
+  background: rgba(15, 23, 42, 0.35) !important;
+  border-color: #1e293b !important;
+  color: #475569 !important;
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* =========================================================
+   STATE + CITY + DISTRICT
+   3 SMALL FIELDS IN ONE ROW
+   ========================================================= */
+
+.modal-overlay .user-form-grid .three-column,
+.modal-overlay .user-form-grid .location-row {
+  grid-column: 1 / -1 !important;
+
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+
+  gap: 12px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Small location fields */
+
+.modal-overlay .state-field,
+.modal-overlay .city-field,
+.modal-overlay .district-field {
+  width: 100% !important;
+
+  min-width: 0 !important;
+}
+
+/* =========================
+   FULL WIDTH
+   ========================= */
+
+.modal-overlay .user-form-grid .full-width {
+  grid-column: 1 / -1 !important;
+}
+
+/* =========================
+   REACT SELECT
+   ========================= */
+
+.modal-overlay .react-select__control {
+  width: 100% !important;
+
+  min-height: 39px !important;
+  height: 39px !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 7px !important;
+
+  box-shadow: none !important;
+}
+
+.modal-overlay .react-select__control:hover {
+  border-color: #475569 !important;
+}
+
+.modal-overlay .react-select__control--is-focused {
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.07) !important;
+}
+
+.modal-overlay .react-select__value-container {
+  padding: 0 9px !important;
+}
+
+.modal-overlay .react-select__single-value {
+  color: #f8fafc !important;
+
+  font-size: 0.8rem !important;
+}
+
+.modal-overlay .react-select__placeholder {
+  color: #64748b !important;
+
+  font-size: 0.8rem !important;
+}
+
+.modal-overlay .react-select__input-container {
+  color: #ffffff !important;
+}
+
+.modal-overlay .react-select__menu {
+  background: #1f2937 !important;
+
+  border: 1px solid #374151 !important;
+
+  z-index: 10000 !important;
+}
+
+.modal-overlay .react-select__option {
+  background: #1f2937 !important;
+
+  color: #ffffff !important;
+
+  font-size: 0.8rem !important;
+}
+
+.modal-overlay .react-select__option--is-focused {
+  background: rgba(0, 229, 255, 0.12) !important;
+
+  color: #ffffff !important;
+}
+
+.modal-overlay .react-select__option--is-selected {
+  background: var(--accent-cyan, #00e5ff) !important;
+
+  color: #001018 !important;
+}
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+/* =========================================================
+   PASSWORD EYE ICON
+========================================================= */
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+.modal-overlay .password-box {
+  position: relative !important;
+
+  width: 100% !important;
+
+  min-width: 0 !important;
+}
+
+.modal-overlay .password-box input {
+  width: 100% !important;
+
+  padding-right: 40px !important;
+}
+
+.modal-overlay .password-box .eye-icon {
+  position: absolute !important;
+
+  top: 50% !important;
+
+  right: 10px !important;
+
+  transform: translateY(-50%) !important;
+
+  width: 26px !important;
+
+  height: 26px !important;
+
+  min-width: 26px !important;
+
+  padding: 0 !important;
+
+  margin: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  background: transparent !important;
+
+  border: none !important;
+
+  outline: none !important;
+
+  box-shadow: none !important;
+
+  color: #94a3b8 !important;
+
+  cursor: pointer !important;
+}
+
+.modal-overlay .password-box .eye-icon:hover {
+  color: var(--accent-cyan, #00f0ff) !important;
+
+  background: transparent !important;
+}
+
+.modal-overlay .password-box .eye-icon svg {
+  width: 17px !important;
+
+  height: 17px !important;
+
+  stroke: currentColor !important;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.modal-overlay .error-text {
+  margin: 1px 0 0 !important;
+
+  color: #f87171 !important;
+
+  font-size: 0.67rem !important;
+
+  line-height: 1.2 !important;
+}
+
+/* =========================================================
+   ACTION AREA
+   ========================================================= */
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.modal-overlay .modal-actions {
+  width: 100% !important;
+
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+
+  gap: 10px !important;
+
+  margin-top: 14px !important;
+  padding-top: 12px !important;
+
+  border-top: 1px solid rgba(148, 163, 184, 0.14) !important;
+
+  position: relative !important;
+  /* important */
+  bottom: auto !important;
+}
+
+/* =========================
+   CANCEL
+   ========================= */
+
+.modal-overlay .modal-actions .btn-cancel {
+  width: 92px !important;
+
+  min-width: 92px !important;
+  max-width: 92px !important;
+
+  height: 37px !important;
+
+  padding: 0 12px !important;
+
+  display: inline-flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: rgba(255, 255, 255, 0.025) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 7px !important;
+
+  color: #cbd5e1 !important;
+
+  font-size: 0.78rem !important;
+
+  font-weight: 600 !important;
+
+  cursor: pointer !important;
+
+  transition: all 0.2s ease !important;
+}
+
+.modal-overlay .modal-actions .btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+
+  border-color: #475569 !important;
+
+  color: #ffffff !important;
+}
+
+/* =========================
+   SUBMIT
+   ========================= */
+
+.modal-overlay .modal-actions .btn-primary,
+.modal-overlay .modal-actions .btn-success {
+  width: 108px !important;
+
+  min-width: 108px !important;
+  max-width: 108px !important;
+
+  height: 37px !important;
+
+  padding: 0 12px !important;
+
+  display: inline-flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: var(--accent-cyan, #00f0ff) !important;
+
+  border: none !important;
+
+  border-radius: 7px !important;
+
+  color: #061018 !important;
+
+  font-size: 0.78rem !important;
+
+  font-weight: 700 !important;
+
+  cursor: pointer !important;
+
+  box-shadow: 0 5px 16px rgba(0, 240, 255, 0.16) !important;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+.modal-overlay .modal-actions .btn-primary:hover,
+.modal-overlay .modal-actions .btn-success:hover {
+  transform: translateY(-1px) !important;
+
+  box-shadow: 0 7px 20px rgba(0, 240, 255, 0.25) !important;
+}
+
+/* =========================================================
+   REMOVE OLD FORM WIDTH RESTRICTIONS
+   ========================================================= */
+
+.modal-overlay .form-grid {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  margin: 0 !important;
+}
+
+/* =========================================================
+   FIX REACT SELECT INTERNAL INPUT
+   Removes the unwanted small input box inside
+   State / District / City dropdowns
+========================================================= */
+
+.modal-overlay .react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #fff !important;
+}
+
+.modal-overlay .react-select__input {
+  width: auto !important;
+  min-width: 2px !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  color: #fff !important;
+
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.modal-overlay .react-select__input:focus {
+  width: auto !important;
+  height: auto !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.modal-overlay .react-select__value-container {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.modal-overlay .react-select__single-value {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .modal-overlay {
+    padding: 10px !important;
+  }
+
+  .modal-overlay .modal-content {
+    width: calc(100vw - 20px) !important;
+
+    max-width: none !important;
+
+    padding: 16px 18px 14px !important;
+  }
+
+  .modal-overlay .user-form-grid {
+    grid-template-columns: 1fr 1fr !important;
+
+    column-gap: 10px !important;
+
+    row-gap: 9px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .modal-overlay {
+    padding: 8px !important;
+  }
+
+  .modal-overlay .modal-content {
+    width: calc(100vw - 16px) !important;
+
+    padding: 15px 14px 13px !important;
+
+    border-radius: 12px !important;
+  }
+
+  .modal-overlay .modal-header {
+    margin-bottom: 12px !important;
+  }
+
+  .modal-overlay .modal-header h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .modal-overlay .user-form-grid {
+    grid-template-columns: 1fr !important;
+
+    row-gap: 9px !important;
+  }
+
+  .modal-overlay .user-form-grid .full-width {
+    grid-column: auto !important;
+  }
+
+  .modal-overlay .modal-actions {
+    margin-top: 10px !important;
+
+    padding-top: 10px !important;
+  }
+}
+
+/* =========================================================
+   ADDRESS TEXTAREA
+========================================================= */
+
+.modal-overlay .form-group textarea {
+  width: 100% !important;
+  min-height: 68px !important;
+  height: 68px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 10px 12px !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 8px !important;
+
+  color: #f8fafc !important;
+
+  font-family: inherit !important;
+  font-size: 0.83rem !important;
+
+  resize: vertical !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important;
+}
+
+.modal-overlay .form-group textarea::placeholder {
+  color: #64748b !important;
+}
+
+.modal-overlay .form-group textarea:focus {
+  outline: none !important;
+
+  background: rgba(15, 23, 42, 0.95) !important;
+
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow:
+    0 0 0 2px rgba(0, 240, 255, 0.07),
+    0 0 12px rgba(0, 240, 255, 0.07) !important;
+}
+
+/* =========================================================
+   STATE / DISTRICT / CITY - 3 COLUMNS
+========================================================= */
+/* =========================================================
+   FIX: STATE / DISTRICT / CITY ALIGNMENT
+   ========================================================= */
+
+.modal-overlay .location-fields {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 16px !important;
+
+  align-items: start !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Each location field */
+.modal-overlay .location-fields .form-group {
+  width: 100% !important;
+  min-width: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+
+  gap: 6px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* City / State / District labels */
+.modal-overlay .location-fields .form-group label {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  height: 17px !important;
+  min-height: 17px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #cbd5e1 !important;
+
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  line-height: 17px !important;
+
+  white-space: nowrap !important;
+}
+
+/* React Select wrapper */
+.modal-overlay .location-fields .user-react-select {
+  width: 100% !important;
+  min-width: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* =========================================================
+   SELECT BOX
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__control {
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  box-sizing: border-box !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+
+  box-shadow: none !important;
+}
+
+/* Hover */
+.modal-overlay .location-fields .user-react-select .react-select__control:hover {
+  border-color: #475569 !important;
+}
+
+/* Focus */
+.modal-overlay .location-fields .user-react-select .react-select__control--is-focused {
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.07) !important;
+}
+
+/* =========================================================
+   VALUE CONTAINER
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__value-container {
+  height: 38px !important;
+  min-height: 38px !important;
+
+  flex: 1 1 auto !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  min-width: 0 !important;
+
+  padding: 0 10px !important;
+
+  margin: 0 !important;
+
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+}
+
+/* =========================================================
+   SELECTED VALUE
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__single-value {
+  position: static !important;
+
+  display: block !important;
+
+  max-width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #f8fafc !important;
+
+  font-size: 0.81rem !important;
+  line-height: 38px !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+
+  transform: none !important;
+}
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__placeholder {
+  position: static !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #64748b !important;
+
+  font-size: 0.81rem !important;
+  line-height: 38px !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+
+  transform: none !important;
+}
+
+/* =========================================================
+   REACT SELECT INTERNAL INPUT
+   Prevent "small box" / alignment issue
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__input-container {
+  display: flex !important;
+  align-items: center !important;
+
+  height: 38px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #fff !important;
+
+  box-sizing: border-box !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__input-container input {
+  width: auto !important;
+
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  color: #fff !important;
+
+  font-size: 0.81rem !important;
+}
+
+/* VERY IMPORTANT:
+   Don't apply your normal input CSS to React Select input */
+.modal-overlay .location-fields .user-react-select .react-select__input-container input:focus {
+  width: auto !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+
+  border: none !important;
+  outline: none !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   ARROW / INDICATORS
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__indicators {
+  height: 38px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  flex-shrink: 0 !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__indicator {
+  width: 32px !important;
+  height: 38px !important;
+
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  color: #94a3b8 !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__indicator:hover {
+  color: #ffffff !important;
+}
+
+/* Separator */
+.modal-overlay .location-fields .user-react-select .react-select__indicator-separator {
+  width: 1px !important;
+
+  height: 20px !important;
+
+  margin: 9px 0 !important;
+
+  background: #475569 !important;
+}
+
+/* =========================================================
+   DROPDOWN
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__menu {
+  margin-top: 4px !important;
+
+  background: #1f2937 !important;
+
+  border: 1px solid #374151 !important;
+
+  border-radius: 8px !important;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+
+  z-index: 10000 !important;
+
+  overflow: hidden !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__menu-list {
+  padding: 4px !important;
+
+  max-height: 180px !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__option {
+  padding: 9px 10px !important;
+
+  background: #1f2937 !important;
+
+  color: #ffffff !important;
+
+  font-size: 0.82rem !important;
+
+  border-radius: 5px !important;
+
+  cursor: pointer !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__option--is-focused {
+  background: rgba(0, 229, 255, 0.12) !important;
+
+  color: #ffffff !important;
+}
+
+.modal-overlay .location-fields .user-react-select .react-select__option--is-selected {
+  background: var(--accent-cyan, #00e5ff) !important;
+
+  color: #001018 !important;
+}
+
+/* =========================================================
+   DISABLED DISTRICT / CITY
+   ========================================================= */
+
+.modal-overlay .location-fields .user-react-select .react-select__control--is-disabled {
+  opacity: 0.55 !important;
+
+  cursor: not-allowed !important;
+
+  background: rgba(15, 23, 42, 0.55) !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .modal-overlay .location-fields {
+    grid-template-columns: 1fr !important;
+
+    gap: 10px !important;
+  }
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.modal-overlay .user-form-grid .form-group input,
+.modal-overlay .user-form-grid .form-group select {
+  width: 100% !important;
+
+  max-width: none !important;
+
+  height: 38px !important;
+
+  min-height: 38px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 11px !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 8px !important;
+
+  color: #f8fafc !important;
+
+  font-size: 0.81rem !important;
+
+  outline: none !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important;
+}
+
+.modal-overlay .user-form-grid .form-group input::placeholder {
+  color: #64748b !important;
+}
+
+.modal-overlay .user-form-grid .form-group input:focus,
+.modal-overlay .user-form-grid .form-group select:focus {
+  background: rgba(15, 23, 42, 0.95) !important;
+
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.07) !important;
+}
+
+/* =========================================================
+   ADDRESS TEXTAREA
+   ========================================================= */
+
+.modal-overlay .user-form-grid .form-group textarea {
+  width: 100% !important;
+
+  height: 52px !important;
+
+  min-height: 52px !important;
+
+  max-height: 52px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 8px 11px !important;
+
+  background: rgba(15, 23, 42, 0.78) !important;
+
+  border: 1px solid #334155 !important;
+
+  border-radius: 8px !important;
+
+  color: #f8fafc !important;
+
+  font-size: 0.81rem !important;
+
+  line-height: 1.3 !important;
+
+  resize: none !important;
+
+  outline: none !important;
+}
+
+.modal-overlay .user-form-grid .form-group textarea:focus {
+  border-color: var(--accent-cyan, #00f0ff) !important;
+
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.07) !important;
+}
+
+.modal-overlay .user-form-grid .form-group textarea::placeholder {
+  color: #64748b !important;
+}

@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+package-lock.json
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build files
+dist/
+build/
+
+# Misc
+.DS_Store
+
+credentials.json
+token.json
+
+ckeditor-upload-images/
+uploads/
+
+web.config

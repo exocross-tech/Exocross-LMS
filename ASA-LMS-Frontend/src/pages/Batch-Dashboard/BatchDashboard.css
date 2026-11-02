@@ -1,0 +1,843 @@
+/* BatchDashboard.css - Dark Premium Design System for ASA LMS Batch Dashboard */
+
+.batch-db-container {
+  padding: 24px;
+  background-color: var(--bg-main, #060910);
+  min-height: calc(100vh - 70px);
+  color: var(--text-primary, #ffffff);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------------------------------------------------
+   1. HEADER SECTION
+--------------------------------------------------- */
+.batch-db-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.batch-db-breadcrumb {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan, #00f0ff);
+  text-transform: uppercase;
+}
+
+.batch-db-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.batch-db-title-left h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.batch-db-title-left p {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.9rem;
+}
+
+.batch-db-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Batch Selector Dropdown */
+.batch-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.batch-select-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--accent-cyan, #00f0ff);
+  pointer-events: none;
+}
+
+.batch-select-dropdown {
+  background: var(--bg-card, #0d121c);
+  color: #ffffff;
+  border: 1px solid var(--border-color, #1e293b);
+  border-radius: 10px;
+  padding: 10px 36px 10px 38px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.batch-select-dropdown:hover,
+.batch-select-dropdown:focus {
+  border-color: var(--accent-cyan, #00f0ff);
+  box-shadow: 0 0 12px var(--accent-cyan-glow, rgba(0, 240, 255, 0.2));
+}
+
+.batch-select-arrow {
+  position: absolute;
+  right: 12px;
+  color: var(--text-secondary, #94a3b8);
+  pointer-events: none;
+}
+
+/* Action Buttons */
+.btn-db-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-db-action.primary {
+  background: linear-gradient(135deg, #00f0ff 0%, #00a8ff 100%);
+  color: #060910;
+  box-shadow: 0 4px 14px rgba(0, 240, 255, 0.3);
+}
+
+.btn-db-action.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.45);
+}
+
+.btn-db-action.secondary {
+  background: var(--bg-card, #0d121c);
+  color: #ffffff;
+  border-color: var(--border-color, #1e293b);
+}
+
+.btn-db-action.secondary:hover {
+  border-color: var(--accent-cyan, #00f0ff);
+  background: #131b29;
+}
+
+/* ---------------------------------------------------
+   2. HERO LIVE CLASS BANNER
+--------------------------------------------------- */
+.batch-live-banner {
+  background: linear-gradient(135deg, rgba(13, 18, 28, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  min-height: auto;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.batch-live-banner::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.live-banner-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.live-status-pill.live-now {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.live-status-pill.upcoming {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--accent-cyan, #00f0ff);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse-glow 1.5s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.live-banner-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 2px 0;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.live-banner-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px 22px;
+  flex-wrap: wrap;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.88rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.live-banner-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.btn-launch-live {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 100%);
+  color: #060910;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 240, 255, 0.35);
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-launch-live:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 240, 255, 0.5);
+}
+
+/* ---------------------------------------------------
+   3. METRIC CARDS STRIP
+--------------------------------------------------- */
+.batch-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.batch-stat-card {
+  background: var(--bg-card, #0d121c);
+  border: 1px solid var(--border-color, #1e293b);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.batch-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.stat-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.stat-icon-wrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stat-icon-wrapper.cyan { color: #00f0ff; background: rgba(0, 240, 255, 0.1); }
+.stat-icon-wrapper.purple { color: #a855f7; background: rgba(168, 85, 247, 0.1); }
+.stat-icon-wrapper.green { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+.stat-icon-wrapper.amber { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.stat-footer-text {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-footer-text strong {
+  color: var(--accent-cyan, #00f0ff);
+}
+
+.stat-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00f0ff 0%, #3b82f6 100%);
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------
+   4. TWO-COLUMN PANEL LAYOUTS
+--------------------------------------------------- */
+.batch-db-grid-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .batch-db-grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dashboard Panel Styling */
+.db-panel {
+  background: var(--bg-card, #0d121c);
+  border: 1px solid var(--border-color, #1e293b);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.db-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.db-panel-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-panel-link {
+  color: var(--accent-cyan, #00f0ff);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.btn-panel-link:hover {
+  gap: 8px;
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------
+   5. BATCH HEALTH MATRIX (PANEL 1)
+--------------------------------------------------- */
+.batch-health-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.batch-health-card {
+  background: #090e17;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.batch-health-card:hover {
+  border-color: var(--border-color, #1e293b);
+}
+
+.health-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.batch-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.batch-code-pill {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--accent-cyan, #00f0ff);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.batch-name-txt {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.role-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.role-tag-pill.host {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.role-tag-pill.support {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.health-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.h-stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.h-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted, #64748b);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.h-stat-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.h-stat-value.cyan { color: #00f0ff; }
+.h-stat-value.green { color: #10b981; }
+
+.batch-progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.batch-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #94a3b8);
+}
+
+.batch-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.batch-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #00f0ff 100%);
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------
+   6. UPCOMING SCHEDULE TIMELINE (PANEL 2)
+--------------------------------------------------- */
+.schedule-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px;
+  background: #090e17;
+  border-left: 3px solid var(--accent-cyan, #00f0ff);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.schedule-item-card:hover {
+  transform: translateX(3px);
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 65px;
+  padding: 6px;
+  background: rgba(0, 240, 255, 0.08);
+  border-radius: 6px;
+  color: var(--accent-cyan, #00f0ff);
+}
+
+.time-box .time-str {
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.time-box .date-str {
+  font-size: 0.68rem;
+  color: var(--text-secondary, #94a3b8);
+}
+
+.schedule-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.schedule-topic {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.schedule-sub {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #94a3b8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.batch-badge-sm {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------
+   7. STUDENT ROSTER & ENGAGEMENT TABLE (PANEL 3)
+--------------------------------------------------- */
+.roster-table-container {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.roster-db-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.roster-db-table th {
+  background: #090e17;
+  color: var(--text-secondary, #94a3b8);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color, #1e293b);
+}
+
+.roster-db-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  vertical-align: middle;
+}
+
+.roster-db-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.student-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 100%);
+  color: #060910;
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.student-name-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-name-txt {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.student-email-txt {
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+}
+
+.att-pill {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.att-pill.high { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+.att-pill.medium { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.att-pill.low { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-dot-sm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.status-dot-sm.active { background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.5); }
+.status-dot-sm.inactive { background: #64748b; }
+
+/* ---------------------------------------------------
+   8. ANNOUNCEMENTS & ALERTS FEED (PANEL 4)
+--------------------------------------------------- */
+.announcement-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feed-item {
+  background: #090e17;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #ffffff;
+}
+
+.feed-date {
+  font-size: 0.72rem;
+  color: var(--text-muted, #64748b);
+}
+
+.feed-content {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.4;
+}
+
+.feed-batch-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: var(--accent-cyan, #00f0ff);
+  font-weight: 600;
+}
+
+/* Empty & Loading States */
+.db-empty-state {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted, #64748b);
+  font-size: 0.88rem;
+}
+
+/* ---------------------------------------------------
+   9. RESPONSIVE BREAKPOINTS
+--------------------------------------------------- */
+@media (max-width: 1024px) {
+  .batch-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .batch-live-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 22px;
+    gap: 16px;
+  }
+  .live-banner-left {
+    width: 100%;
+    max-width: 100%;
+  }
+  .live-banner-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .btn-launch-live {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .batch-db-container {
+    padding: 16px;
+  }
+  .batch-live-banner {
+    padding: 18px 16px;
+  }
+  .batch-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .batch-db-title-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .batch-db-header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .batch-select-wrapper,
+  .batch-select-dropdown,
+  .btn-db-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

@@ -1,0 +1,137 @@
+/* =========================================================
+   STUDENT PROJECT SUBMISSION - MATCHING ASSIGNMENT PAGE UI
+   ========================================================= */
+
+.project-submission-page {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+  color: #ffffff;
+  min-height: calc(100vh - 80px);
+}
+
+/* =========================================================
+   TWO TOP OPTIONS: ASSESSMENT vs FINAL ASSESSMENT
+   ========================================================= */
+
+.submission-options-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.submission-option-tab {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 26px;
+  background: #0f172a;
+  border: 1px solid #26364c;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.submission-option-tab:hover {
+  transform: translateY(-3px);
+  background: #111c30;
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), 0 0 20px rgba(0, 229, 255, 0.12);
+}
+
+.option-tab-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00e5ff;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.12);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.submission-option-tab:hover .option-tab-icon {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: #00e5ff;
+  color: #00e5ff;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.option-tab-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-tab-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+}
+
+.option-tab-sub {
+  font-size: 13.5px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.option-tab-arrow {
+  color: #64748b;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.submission-option-tab:hover .option-tab-arrow {
+  color: #00e5ff;
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (Matches AssignmentPage)
+   ========================================================= */
+
+@media (max-width: 750px) {
+  .project-submission-page {
+    padding: 22px;
+  }
+
+  .submission-options-container {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-submission-page {
+    padding: 16px;
+  }
+
+  .submission-option-tab {
+    padding: 18px;
+  }
+
+  .option-tab-title {
+    font-size: 16px;
+  }
+
+  .option-tab-sub {
+    font-size: 12.5px;
+  }
+}

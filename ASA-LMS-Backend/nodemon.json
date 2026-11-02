@@ -1,0 +1,24 @@
+{
+  "watch": [
+    "app.js",
+    "config",
+    "controllers",
+    "middleware",
+    "routes",
+    "services",
+    "utils",
+    "validators"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "node_modules",
+    "uploads",
+    "uploads/**",
+    "ckeditor-upload-images",
+    "ckeditor-upload-images/**",
+    "scripts/**",
+    "*.log",
+    ".git"
+  ],
+  "delay": 1000
+}

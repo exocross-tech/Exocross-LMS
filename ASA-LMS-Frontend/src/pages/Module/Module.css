@@ -1,0 +1,447 @@
+.module-page {
+  min-height: 100%;
+  padding: 28px;
+  color: #f8fafc;
+}
+
+/* Header */
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.module-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #00e5ff;
+}
+
+.module-header h1 {
+  margin: 8px 0;
+  font-size: 30px;
+}
+
+.module-header p {
+  color: #94a3b8;
+}
+
+.add-module-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #06b6d4;
+  color: #001018;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.add-module-btn:hover {
+  background: #00c4e3;
+}
+
+/* Table */
+
+.module-table-card {
+  background: rgba(15, 23, 42, .85);
+  border: 1px solid rgba(148,163,184,.12);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.module-table thead {
+  background: rgba(30,41,59,.95);
+}
+
+.module-table th {
+  text-align: left;
+  padding: 16px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.module-table td {
+  padding: 16px;
+  border-top: 1px solid rgba(148,163,184,.08);
+}
+
+.module-name {
+  font-weight: 600;
+}
+
+.center {
+  text-align: center;
+}
+
+.table-message {
+  text-align: center;
+  padding: 30px;
+  color: #94a3b8;
+}
+
+/* Action Buttons */
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.edit-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(30,41,59,.9);
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.edit-btn:hover {
+  background: #334155;
+}
+
+.delete-module-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(30,41,59,.9);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.delete-module-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Toggle Switch */
+
+.status-switch {
+  position: relative;
+  width: 50px;
+  height: 27px;
+  padding: 0;
+  border: none;
+  border-radius: 27px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.status-switch.on {
+  background: #08c5df;
+}
+
+.status-switch.off {
+  background: #263445;
+}
+
+.status-switch-knob {
+  position: absolute;
+  top: 3.5px;
+  left: 3.5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .2s ease;
+}
+
+.status-switch.on .status-switch-knob {
+  transform: translateX(23px);
+}
+
+.status-switch.off .status-switch-knob {
+  transform: translateX(0);
+}
+
+.status-switch:hover {
+  transform: translateY(-1px);
+}
+
+.status-switch.on:hover {
+  background: #00b8d4;
+}
+
+.status-switch.off:hover {
+  background: #34465a;
+}
+
+.status-switch:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 3px;
+}
+
+/* Modal */
+
+.module-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.module-modal {
+  width: 420px;
+  background: #0f172a;
+  border: 1px solid rgba(148,163,184,.15);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 0 18px 20px;
+}
+
+.modal-body label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-body input {
+  width: 100%;
+  background: rgba(15,23,42,.85);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  outline: none;
+}
+
+.modal-body input:focus {
+  border-color: #00e5ff;
+}
+
+/* Modal Footer */
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 18px;
+}
+
+.cancel-btn,
+.submit-btn {
+  height: 36px;
+  min-width: 88px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cancel-btn {
+  background: rgba(30,41,59,.9);
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background: #334155;
+}
+
+.submit-btn {
+  background: #06b6d4;
+  color: #001018;
+}
+
+.submit-btn:hover {
+  background: #00c4e3;
+}
+
+/* =====================================================
+   TABLE FOOTER PAGINATION
+===================================================== */
+
+.module-table tfoot td {
+  padding: 0;
+  border-top: 1px solid #263445;
+  border-bottom: none;
+  background: #0d1621;
+}
+
+.module-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 14px 16px;
+}
+
+/* =========================
+   PAGINATION INFO
+========================= */
+
+.module-pagination-info {
+  color: #64748b;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.module-pagination-info strong {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+/* =========================
+   PAGINATION BUTTON AREA
+========================= */
+
+.module-pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   PAGE NUMBERS
+========================= */
+
+.module-pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.module-pagination-btn,
+.module-pagination-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  height: 34px;
+  min-width: 34px;
+
+  padding: 0 10px;
+
+  background: #111827;
+  color: #cbd5e1;
+
+  border: 1px solid #334155;
+  border-radius: 6px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.module-pagination-number {
+  padding: 0;
+}
+
+/* =========================
+   HOVER
+========================= */
+
+.module-pagination-btn:hover:not(:disabled),
+.module-pagination-number:hover {
+  color: #00e5ff;
+  border-color: #00e5ff;
+  background: rgba(0, 229, 255, 0.06);
+}
+
+/* =========================
+   ACTIVE
+========================= */
+
+.module-pagination-number.active {
+  background: #00e5ff;
+  border-color: #00e5ff;
+  color: #0f172a;
+}
+
+/* =========================
+   DISABLED
+========================= */
+
+.module-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .module-table-pagination {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .module-pagination-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .module-pagination-pages {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

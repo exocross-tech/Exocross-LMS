@@ -1,0 +1,618 @@
+/* =====================================================
+   LIVE CLASS PAGE
+   ===================================================== */
+
+.liveclass-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 28px;
+  box-sizing: border-box;
+  color: #f8fafc;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.liveclass-header {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  color: #00f0ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.header-main-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+  margin-top: 8px;
+  color: #8ea4bf;
+  font-size: 0.95rem;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+   ===================================================== */
+
+.liveclass-container {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* =====================================================
+   MULTIPLE CLASS GRID
+   2 CARDS PER ROW
+   ===================================================== */
+
+.liveclass-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+
+/* =====================================================
+   COMMON CARD
+   ===================================================== */
+
+.liveclass-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background: rgba(10, 18, 38, 0.88);
+
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(0, 240, 255, 0.18);
+
+  border-radius: 20px;
+
+  padding: 36px 28px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(0, 240, 255, 0.03);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.liveclass-card:hover {
+  border-color: rgba(0, 240, 255, 0.32);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 24px rgba(0, 240, 255, 0.04);
+}
+
+
+/* =====================================================
+   SINGLE CLASS CARD
+   ===================================================== */
+
+.main-access-card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 44px 28px;
+}
+
+
+/* =====================================================
+   MULTIPLE CLASS CARD
+   ===================================================== */
+
+.multi-access-card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 32px 24px;
+
+  min-height: 360px;
+}
+
+
+/* =====================================================
+   LIVE BADGE
+   ===================================================== */
+
+.card-top-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.live-dot-pulse {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  background-color: #ef4444;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px #ef4444;
+
+  animation: liveRedPulse 1.5s infinite
+    ease-in-out;
+}
+
+@keyframes liveRedPulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 1;
+
+    box-shadow: 0 0 10px #ef4444;
+  }
+
+  50% {
+    transform: scale(1.3);
+
+    opacity: 0.6;
+
+    box-shadow: 0 0 18px #ef4444;
+  }
+}
+
+.badge-label {
+  color: #00f0ff;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.no-session-label {
+  color: #94a3b8;
+}
+
+
+/* =====================================================
+   BATCH LABEL
+   ===================================================== */
+
+.batch-label {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  max-width: 100%;
+
+  margin-bottom: 12px;
+
+  padding: 6px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 240, 255, 0.08);
+
+  border: 1px solid rgba(0, 240, 255, 0.18);
+
+  color: #8eeeff;
+
+  font-size: 0.76rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   CLASS TITLE
+   ===================================================== */
+
+.class-title {
+  width: 100%;
+
+  margin: 0 0 10px 0;
+
+  color: #ffffff;
+
+  font-size: 2.1rem;
+
+  font-weight: 700;
+
+  letter-spacing: -0.01em;
+
+  line-height: 1.2;
+
+  word-break: break-word;
+}
+
+.multi-access-card .class-title {
+  font-size: 1.5rem;
+
+  margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   CLASS META
+   ===================================================== */
+
+.class-meta {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #94a3b8;
+
+  font-size: 0.92rem;
+
+  margin-bottom: 28px;
+}
+
+.multi-access-card .class-meta {
+  margin-bottom: 22px;
+
+  font-size: 0.85rem;
+}
+
+.no-session-text {
+  margin-bottom: 0;
+
+  color: #64748b;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+   ===================================================== */
+
+.countdown-box {
+  margin-bottom: 32px;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.multi-access-card .countdown-box {
+  margin-bottom: 26px;
+}
+
+.countdown-time {
+  font-family:
+    "Outfit",
+    "Courier New",
+    monospace;
+
+  font-size: 3.5rem;
+
+  font-weight: 800;
+
+  color: #00f0ff;
+
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 30px rgba(0, 240, 255, 0.45);
+
+  white-space: nowrap;
+}
+
+.countdown-time-small {
+  font-size: 2.2rem;
+
+  letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   JOIN BUTTON
+   ===================================================== */
+
+.join-live-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  min-width: 190px;
+
+  padding: 13px 32px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00f0ff 0%,
+      #00a8ff 100%
+    );
+
+  color: #03111f;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 24px rgba(0, 240, 255, 0.35);
+
+  transition: all 0.25s ease;
+}
+
+.multi-access-card .join-live-btn {
+  min-width: 170px;
+
+  padding: 11px 24px;
+
+  font-size: 0.88rem;
+}
+
+.join-live-btn:hover:not(:disabled):not(.disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 32px rgba(0, 240, 255, 0.55);
+}
+
+.join-live-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.join-live-btn:disabled,
+.join-live-btn.disabled {
+  background: #1e293b !important;
+
+  color: #64748b !important;
+
+  border: 1px solid #334155 !important;
+
+  cursor: not-allowed !important;
+
+  pointer-events: none !important;
+
+  box-shadow: none !important;
+
+  transform: none !important;
+
+  opacity: 0.6 !important;
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.loading-card {
+  min-height: 240px;
+
+  justify-content: center;
+}
+
+.loading-text {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 1rem;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .liveclass-page {
+    padding: 24px 20px;
+  }
+
+  .liveclass-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+    gap: 18px;
+  }
+
+  .multi-access-card {
+    padding: 28px 18px;
+  }
+
+  .multi-access-card .class-title {
+    font-size: 1.35rem;
+  }
+
+  .countdown-time-small {
+    font-size: 1.8rem;
+  }
+
+  .multi-access-card .join-live-btn {
+    min-width: 150px;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+   ===================================================== */
+
+@media (max-width: 650px) {
+  .liveclass-page {
+    padding: 18px 16px;
+  }
+
+  .liveclass-header {
+    margin-bottom: 22px;
+  }
+
+  .header-main-title {
+    font-size: 1.8rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.88rem;
+
+    line-height: 1.5;
+  }
+
+  /*
+     On mobile:
+     1 card per row
+  */
+
+  .liveclass-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .liveclass-card {
+    border-radius: 16px;
+  }
+
+  .main-access-card {
+    padding: 34px 20px;
+  }
+
+  .multi-access-card {
+    min-height: auto;
+
+    padding: 30px 18px;
+  }
+
+  .class-title {
+    font-size: 1.65rem;
+  }
+
+  .multi-access-card .class-title {
+    font-size: 1.35rem;
+  }
+
+  .countdown-time {
+    font-size: 2.5rem;
+
+    letter-spacing: 2px;
+  }
+
+  .countdown-time-small {
+    font-size: 2rem;
+  }
+
+  .join-live-btn,
+  .multi-access-card .join-live-btn {
+    width: 100%;
+
+    min-width: 0;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL DEVICES
+   ===================================================== */
+
+@media (max-width: 400px) {
+  .liveclass-page {
+    padding: 16px 12px;
+  }
+
+  .header-main-title {
+    font-size: 1.55rem;
+  }
+
+  .class-title {
+    font-size: 1.4rem;
+  }
+
+  .multi-access-card .class-title {
+    font-size: 1.2rem;
+  }
+
+  .countdown-time {
+    font-size: 2rem;
+
+    letter-spacing: 1px;
+  }
+
+  .countdown-time-small {
+    font-size: 1.55rem;
+  }
+
+  .badge-label {
+    font-size: 0.65rem;
+
+    letter-spacing: 1.4px;
+  }
+
+  .batch-label {
+    max-width: 90%;
+
+    font-size: 0.7rem;
+  }
+}

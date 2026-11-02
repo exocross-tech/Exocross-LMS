@@ -1,0 +1,58 @@
+.qb-editor-container {
+  width: 100%;
+}
+
+.qb-editor-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  transition: border-color 0.2s ease;
+}
+
+.qb-editor-wrapper:focus-within {
+  border-color: var(--accent-cyan, #00f0ff);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15);
+}
+
+.ck-editor__editable {
+  min-height: var(--editor-min-height, 150px) !important;
+}
+
+/* =====================================================
+   2-COLUMN IMAGE GRID FOR QUESTION STATEMENT
+   (Line 1: Left & Right, Line 2: Left & Right)
+===================================================== */
+.qb-editor-wrapper .ck-content figure.image,
+.qb-editor-wrapper .ck-content .image,
+.qb-editor-wrapper .ck-content p:has(> img) {
+  display: inline-block !important;
+  width: calc(50% - 12px) !important;
+  max-width: calc(50% - 12px) !important;
+  margin: 8px 6px !important;
+  vertical-align: top !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+.qb-editor-wrapper .ck-content figure.image img,
+.qb-editor-wrapper .ck-content .image img,
+.qb-editor-wrapper .ck-content p > img {
+  width: 100% !important;
+  max-height: 240px !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+  border: 1px solid #1e293b !important;
+  background-color: #040711 !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 600px) {
+  .qb-editor-wrapper .ck-content figure.image,
+  .qb-editor-wrapper .ck-content .image,
+  .qb-editor-wrapper .ck-content p:has(> img) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 8px 0 !important;
+  }
+}

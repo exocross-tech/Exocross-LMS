@@ -1,0 +1,335 @@
+/* =========================================================
+   PICTURE MATCHING / LABEL SLOTS STYLES
+   Self-contained CSS Grid and Flexbox - No external framework dependency
+========================================================= */
+
+.pm-container {
+  background: #091222;
+  border: 1px solid #1a2b42;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header */
+.pm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #162438;
+}
+
+.pm-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pm-title {
+  color: #00e5ff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.pm-subtitle {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.pm-status-badge {
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: #00e5ff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pm-status-badge.all-assigned {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+/* Slots Grid */
+.pm-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .pm-slots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Slot Card */
+.pm-slot-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+/* Slot States */
+.pm-slot-card.empty {
+  background: #0b1626;
+  border: 1.5px dashed #223752;
+}
+
+.pm-slot-card.empty:hover {
+  border-color: #38bdf8;
+  background: #0f1c30;
+  transform: translateY(-1px);
+}
+
+.pm-slot-card.empty.target-active {
+  background: rgba(0, 229, 255, 0.06);
+  border: 1.5px dashed #00e5ff;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+  animation: pm-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes pm-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.45);
+  }
+}
+
+.pm-slot-card.occupied {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.08) 0%, rgba(13, 25, 45, 0.95) 100%);
+  border: 1.5px solid #00e5ff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.pm-slot-card.occupied:hover {
+  box-shadow: 0 6px 18px rgba(0, 229, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Slot Interior */
+.pm-slot-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pm-slot-badge {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 8px;
+  background: #00e5ff;
+  color: #03101c;
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 229, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.pm-slot-card.empty .pm-slot-badge {
+  background: #18283d;
+  color: #94a3b8;
+  box-shadow: none;
+}
+
+.pm-slot-card.empty.target-active .pm-slot-badge {
+  background: #00e5ff;
+  color: #03101c;
+}
+
+.pm-slot-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.pm-slot-text.empty-text {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.pm-slot-text.target-text {
+  color: #00e5ff;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Remove button */
+.pm-remove-btn {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 7px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.pm-remove-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  transform: scale(1.08);
+}
+
+/* Options Tray / Answer Pool */
+.pm-pool-card {
+  background: #0b1526;
+  border: 1px solid #1a2a40;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.pm-pool-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.pm-pool-title {
+  color: #e2e8f0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-pool-count {
+  background: #18283d;
+  color: #00e5ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pm-selection-banner {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  color: #facc15;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.pm-chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Option Chips */
+.pm-chip {
+  background: #101c2e;
+  border: 1px solid #23354d;
+  color: #f1f5f9;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: grab;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  user-select: none;
+}
+
+.pm-chip:hover {
+  background: #16263d;
+  border-color: #00e5ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.2);
+}
+
+.pm-chip.selected {
+  background: #00e5ff;
+  color: #041019;
+  border-color: #00e5ff;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.pm-chip.selected .pm-chip-icon {
+  color: #041019;
+}
+
+.pm-chip-icon {
+  color: #64748b;
+  display: flex;
+  align-items: center;
+}
+
+.pm-all-assigned-msg {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

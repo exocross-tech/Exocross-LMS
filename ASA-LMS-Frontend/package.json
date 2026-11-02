@@ -1,0 +1,51 @@
+{
+  "name": "lms-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^11.2.0",
+    "archiver": "^8.0.0",
+    "axios": "^1.19.0",
+    "canvas-confetti": "^1.9.4",
+    "country-state-city": "^3.2.1",
+    "framer-motion": "^13.1.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.25.0",
+    "pdfjs-dist": "^3.11.174",
+    "pica": "^10.0.3",
+    "react": "^19.2.7",
+    "react-datepicker": "^9.1.0",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.85.0",
+    "react-icons": "^5.7.0",
+    "react-paginate": "^8.3.0",
+    "react-router-dom": "^7.18.2",
+    "react-select": "^5.10.2",
+    "react-toastify": "^11.1.0",
+    "react-tooltip": "^6.0.8",
+    "socket.io-client": "^4.8.3",
+    "sweetalert2": "^11.26.25",
+    "sweetalert2-react-content": "^5.1.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^10.6.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "vite": "^8.1.1"
+  }
+}

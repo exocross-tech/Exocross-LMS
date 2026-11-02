@@ -1,0 +1,487 @@
+.student-attendance-container {
+  min-height: 100vh;
+  background-color: #060910;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(15, 23, 42, 0.4) 0%, transparent 50%);
+  color: #f8fafc;
+  padding: 28px;
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   HEADER SECTION
+   ========================================== */
+.attendance-page-header {
+  margin-bottom: 28px;
+}
+
+.header-category-tag {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #00f0ff;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-category-tag .tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #00f0ff;
+  box-shadow: 0 0 8px #00f0ff;
+  display: inline-block;
+}
+
+.header-main-title {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.4rem 0;
+}
+
+.header-subtitle-text {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==========================================
+   STUDENT & BATCH INFO CARD (TOGGLEABLE)
+   ========================================== */
+.student-profile-banner {
+  background: linear-gradient(135deg, rgba(13, 18, 28, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.student-profile-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00f0ff 0%, #3b82f6 100%);
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+.profile-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.info-item-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-item-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.info-item-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.info-item-value.highlight-cyan {
+  color: #00f0ff;
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* ==========================================
+   STATISTICS METRICS CARDS (3 TOP CARDS)
+   ========================================== */
+.metrics-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .metrics-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card {
+  background: #0d121c;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 128px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.08);
+}
+
+.metric-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.metric-card-label {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* CARD 1: OVERALL */
+.metric-value-huge {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #00f0ff;
+  line-height: 1;
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+  margin-bottom: 1rem;
+}
+
+.metric-progress-wrapper {
+  width: 100%;
+  height: 6px;
+  background: #172033;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.metric-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00c6ff 0%, #00f0ff 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 10px #00f0ff;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CARD 2: CLASSES ATTENDED */
+.metric-value-fraction {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.metric-value-fraction .denom {
+  font-size: 1.6rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.metric-value-fraction .slash {
+  font-size: 1.8rem;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* CARD 3: CURRENT STREAK */
+.metric-value-streak {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.metric-value-streak .unit-text {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.streak-flame-icon {
+  color: #00f0ff;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.5));
+}
+
+/* ==========================================
+   MAIN RECENT CLASSES CARD & TOOLBAR
+   ========================================== */
+.recent-classes-card {
+  background: #0d121c;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.recent-classes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.classes-title {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.classes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* SEARCH INPUT */
+.attendance-search-box {
+  display: flex;
+  align-items: center;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  width: 240px;
+  gap: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.attendance-search-box:focus-within {
+  border-color: #00f0ff;
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.15);
+}
+
+.attendance-search-box input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.85rem;
+  outline: none;
+  width: 100%;
+}
+
+.attendance-search-box input::placeholder {
+  color: #475569;
+}
+
+/* FILTER PILLS */
+.filter-tab-group {
+  display: flex;
+  align-items: center;
+  background: #090d16;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+}
+
+.filter-tab-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.filter-tab-btn:hover {
+  color: #94a3b8;
+}
+
+.filter-tab-btn.active {
+  background: #172033;
+  color: #00f0ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   CLASSES LIST ROWS
+   ========================================== */
+.classes-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.class-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid #161e2e;
+  transition: background-color 0.15s ease, padding 0.15s ease;
+}
+
+.class-row-item:last-child {
+  border-bottom: none;
+}
+
+.class-row-item:hover {
+  background-color: rgba(15, 23, 42, 0.4);
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  border-radius: 8px;
+}
+
+.class-row-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.class-topic-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.class-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.class-date-text {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.class-batch-badge {
+  font-size: 0.72rem;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-weight: 600;
+}
+
+.class-remarks-text {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ==========================================
+   STATUS BADGES (PRESENT / ABSENT)
+   ========================================== */
+.attendance-status-badge {
+  font-family: var(--font-family, 'Outfit', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.45rem 1.25rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.attendance-status-badge.present {
+  background: #0a1727;
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.12);
+}
+
+.attendance-status-badge.absent {
+  background: #e11d48;
+  color: #ffffff;
+  border: 1px solid #f43f5e;
+  box-shadow: 0 0 14px rgba(225, 29, 72, 0.4);
+}
+
+.attendance-status-badge.not-marked {
+  background: rgba(30, 41, 59, 0.7);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.attendance-status-badge.late {
+  background: #7c2d12;
+  color: #fdba74;
+  border: 1px solid #f97316;
+}
+
+/* ==========================================
+   EMPTY & LOADING STATES
+   ========================================== */
+.attendance-loading-state,
+.attendance-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+  gap: 1rem;
+  text-align: center;
+}
+
+.attendance-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 240, 255, 0.15);
+  border-top-color: #00f0ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

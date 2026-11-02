@@ -1,0 +1,334 @@
+.fpt-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fpt-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fpt-breadcrumb {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00f0ff;
+  text-transform: uppercase;
+}
+
+.fpt-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.fpt-title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fpt-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.fpt-subtitle {
+  font-size: 0.875rem;
+  color: #8492a6;
+  margin: 0;
+}
+
+.fpt-title-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fpt-btn-sync {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #121929;
+  border: 1px solid #1e2c45;
+  color: #e2e8f0;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fpt-btn-sync:hover {
+  background-color: #1a253c;
+  border-color: #00f0ff;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+}
+
+.fpt-btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00f0ff;
+  border: none;
+  color: #080d16;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+}
+
+.fpt-btn-export:hover {
+  background: #2eeaff;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Metric Summary Row */
+.fpt-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.fpt-metric-card {
+  background-color: #0a0f1d;
+  border: 1px solid #162035;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.fpt-metric-label {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #718096;
+  text-transform: uppercase;
+}
+
+.fpt-excel-label-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fpt-excel-icon {
+  color: #718096;
+}
+
+.fpt-metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.fpt-metric-value.collected {
+  color: #00ff88;
+}
+
+.fpt-metric-value.pending {
+  color: #ff9900;
+}
+
+.fpt-metric-value.connected {
+  color: #00f0ff;
+  font-size: 1.6rem;
+}
+
+/* Search Bar */
+.fpt-search-bar {
+  position: relative;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.fpt-search-icon {
+  position: absolute;
+  left: 1rem;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.fpt-search-input {
+  width: 100%;
+  background-color: #0a0f1d;
+  border: 1px solid #162035;
+  border-radius: 8px;
+  padding: 0.6rem 1rem 0.6rem 2.6rem;
+  color: #ffffff;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.fpt-search-input:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.fpt-search-input::placeholder {
+  color: #64748b;
+}
+
+/* Ledger Panel & Table */
+.fpt-ledger-panel {
+  background-color: #0a0f1d;
+  border: 1px solid #162035;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.fpt-panel-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.fpt-table-container {
+  overflow-x: auto;
+}
+
+.fpt-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.fpt-table th {
+  padding: 0.85rem 1rem;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fpt-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.fpt-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.fpt-table tbody tr:hover td {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.fpt-student-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fpt-student-name {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.fpt-payment-method {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.fpt-batch-tag {
+  display: inline-block;
+  background-color: #0e1726;
+  border: 1px solid #1a283e;
+  color: #8293ad;
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  letter-spacing: 0.02em;
+}
+
+.fpt-amount-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.fpt-due-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fpt-paid-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.fpt-due-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.fpt-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.fpt-status-badge.status-paid {
+  color: #00ff88;
+}
+
+.fpt-status-badge.status-partial {
+  color: #ff9900;
+}
+
+.fpt-status-badge.status-overdue {
+  color: #ff3b3b;
+}
+
+.fpt-status-badge.status-pending {
+  color: #8492a6;
+}
+
+@media (max-width: 900px) {
+  .fpt-metrics-row {
+    grid-template-columns: 1fr;
+  }
+  .fpt-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

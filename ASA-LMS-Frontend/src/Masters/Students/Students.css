@@ -1,0 +1,683 @@
+/* =====================================================
+   STUDENTS CONTAINER
+===================================================== */
+
+.students-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.students-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.students-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.title-left {
+  min-width: 0;
+}
+
+.welcome-text {
+  margin: 0;
+}
+
+.welcome-subtext {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.breadcrumb {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   TITLE ACTIONS
+===================================================== */
+
+.title-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  border: 1px solid var(--border-color);
+
+  color: var(--text-primary);
+
+  transition: all 0.2s ease;
+
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #00e5ff;
+  color: #00e5ff;
+}
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.students-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 4px;
+
+  width: 100%;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-bar {
+  width: 250px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  transition: border-color 0.2s ease;
+}
+
+.search-bar:focus-within {
+  border-color: #00e5ff;
+}
+
+.search-icon {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  width: 100%;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+}
+
+.search-bar input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* =====================================================
+   BATCH FILTER
+===================================================== */
+
+.batch-filter {
+  width: 220px;
+  min-width: 220px;
+}
+
+/*
+   IMPORTANT:
+   Keep the select compact.
+*/
+
+.batch-filter .react-select__control {
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+.batch-filter .react-select__control:hover {
+  border-color: #00e5ff;
+}
+
+.batch-filter .react-select__control--is-focused {
+  border-color: #00e5ff;
+  box-shadow: none;
+}
+
+.batch-filter .react-select__value-container {
+  height: 40px;
+  padding: 0 10px;
+
+  overflow: hidden;
+}
+
+.batch-filter .react-select__single-value {
+  color: var(--text-primary);
+
+  font-size: 13px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.batch-filter .react-select__placeholder {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+.batch-filter .react-select__indicator-separator {
+  display: none;
+}
+
+.batch-filter .react-select__dropdown-indicator {
+  color: var(--text-secondary);
+
+  padding: 6px;
+}
+
+.batch-filter .react-select__clear-indicator {
+  color: var(--text-secondary);
+
+  padding: 5px;
+}
+
+.batch-filter .react-select__clear-indicator:hover {
+  color: #ef4444;
+}
+
+/* =====================================================
+   DROPDOWN MENU
+===================================================== */
+
+.batch-filter .react-select__menu {
+  background: #0f172a;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  z-index: 9999;
+}
+
+.batch-filter .react-select__menu-list {
+  padding: 4px;
+}
+
+.batch-filter .react-select__option {
+  background: transparent;
+
+  color: #e2e8f0;
+
+  font-size: 13px;
+
+  padding: 9px 10px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.batch-filter .react-select__option--is-focused {
+  background: rgba(0, 229, 255, 0.12);
+
+  color: #ffffff;
+}
+
+.batch-filter .react-select__option--is-selected {
+  background: #00e5ff;
+
+  color: #08111f;
+}
+
+.batch-filter .react-select__option--is-selected:hover {
+  background: #00e5ff;
+
+  color: #08111f;
+}
+
+/* =====================================================
+   RESULTS COUNT
+===================================================== */
+
+.results-count {
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  margin-left: 2px;
+}
+
+/* =====================================================
+   TABLE CONTAINER
+===================================================== */
+
+.students-table-container {
+  width: 100%;
+
+  background-color: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  margin-top: 2px;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.students-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  text-align: left;
+}
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.students-table th {
+  padding: 1.1rem 1.4rem;
+
+  font-size: 0.72rem;
+
+  font-weight: 600;
+
+  color: var(--text-secondary);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+
+  border-bottom: 1px solid var(--border-color);
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.students-table td {
+  padding: 1.1rem 1.4rem;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  font-size: 0.88rem;
+
+  vertical-align: middle;
+}
+
+.students-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.students-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* =====================================================
+   STUDENT NO
+===================================================== */
+
+.col-callsign {
+  width: 130px;
+  min-width: 120px;
+
+  text-align: center;
+
+  color: #00e5ff;
+
+  font-weight: 700;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   NAME
+===================================================== */
+
+.col-name {
+  min-width: 180px;
+}
+
+.student-name {
+  color: var(--text-primary);
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   BATCH
+===================================================== */
+
+.col-batch {
+  min-width: 220px;
+}
+
+.batch-code-pill {
+  display: inline-block;
+
+  max-width: 100%;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(0, 240, 255, 0.08);
+
+  border: 1px solid rgba(0, 240, 255, 0.25);
+
+  color: #00f0ff;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.not-assigned {
+  color: var(--text-secondary);
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   ATTENDANCE
+===================================================== */
+
+.col-attendance {
+  color: var(--text-primary);
+}
+
+/* =====================================================
+   SCORE
+===================================================== */
+
+.col-score {
+  color: var(--accent-cyan);
+
+  font-weight: 700;
+
+  font-size: 1rem;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.col-status {
+  font-weight: 700;
+
+  font-size: 0.75rem;
+}
+
+.status-pill {
+  display: inline-block;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.status-pill.active {
+  background: rgba(34, 197, 94, 0.12);
+
+  border: 1px solid rgba(34, 197, 94, 0.28);
+
+  color: #22c55e;
+}
+
+.status-pill.inactive {
+  background: rgba(239, 68, 68, 0.12);
+
+  border: 1px solid rgba(239, 68, 68, 0.28);
+
+  color: #ef4444;
+}
+
+/* =====================================================
+   TABLE MESSAGE
+===================================================== */
+
+.table-message {
+  text-align: center !important;
+
+  padding: 45px 20px !important;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   PAGINATION
+===================================================== */
+
+.pagination-bar {
+  margin-top: 4px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.pagination-info {
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.pagination-info strong {
+  color: #ffffff;
+}
+
+/* =====================================================
+   PAGINATION ACTIONS
+===================================================== */
+
+.pagination-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.pagination-actions button {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #0f172a;
+
+  border: 1px solid #334155;
+
+  color: #ffffff;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.pagination-actions button:hover:not(:disabled) {
+  border-color: #00f0ff;
+
+  color: #00f0ff;
+}
+
+.pagination-actions button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+.page-number {
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  padding: 0 5px;
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .students-container {
+    padding: 1rem;
+  }
+
+  .students-title-row {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .title-actions {
+    width: 100%;
+  }
+
+  .btn-outline {
+    width: 100%;
+  }
+
+  .students-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .batch-filter {
+    width: 100%;
+
+    min-width: 100%;
+  }
+
+  .results-count {
+    width: 100%;
+  }
+
+  .students-table-container {
+    overflow-x: auto;
+  }
+
+  .students-table {
+    min-width: 850px;
+  }
+
+  .pagination-bar {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .pagination-actions {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+}

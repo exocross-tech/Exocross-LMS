@@ -1,0 +1,653 @@
+/* =========================================================
+   STUDENT REPORT CARD PAGE STYLES
+========================================================= */
+
+.student-report-card-page {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+  color: #ffffff;
+  min-height: calc(100vh - 70px);
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.report-card-page-header {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.report-card-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #00e5ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.report-card-page-header h1 {
+  margin: 7px 0 5px;
+  color: #f8fafc;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.report-card-page-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* =========================================================
+   LOADING & ERROR STATES
+========================================================= */
+
+.report-card-loading-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  color: #94a3b8;
+  gap: 16px;
+}
+
+.report-card-loading-spinner {
+  animation: reportCardSpin 1s linear infinite;
+  color: #00bcd4;
+}
+
+@keyframes reportCardSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   STATE CARD: NOT COMPLETED & COMPLETED
+========================================================= */
+
+.report-card-state-wrapper {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.report-card-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 36px;
+  background: #0f172a;
+  border: 1px solid #26364c;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.report-card-state-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00bcd4, #3b82f6, #6366f1);
+}
+
+.report-card-state-card.completed::before {
+  background: linear-gradient(90deg, #10b981, #06b6d4, #3b82f6);
+}
+
+.report-card-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.badge-pending {
+  background: rgba(234, 179, 8, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(234, 179, 8, 0.28);
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.report-card-state-icon-box {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.report-card-state-icon-glow {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.report-card-state-icon-glow.success {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+}
+
+.report-card-state-main-icon {
+  color: #fbbf24;
+  z-index: 1;
+}
+
+.report-card-state-main-icon.success {
+  color: #10b981;
+}
+
+.report-card-state-title {
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  max-width: 580px;
+}
+
+.report-card-state-title.success {
+  color: #f8fafc;
+  font-size: 24px;
+}
+
+.report-card-state-desc {
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 0 28px 0;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.report-card-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.report-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.report-card-btn.btn-download {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+}
+
+.report-card-btn.btn-download:hover:not(:disabled) {
+  background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+}
+
+.report-card-btn.btn-download:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.report-card-btn.btn-preview {
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.report-card-btn.btn-preview:hover {
+  background: #334155;
+  border-color: #00e5ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   COMPLETED STATE & INLINE PREVIEW CONTAINER
+========================================================= */
+
+.report-card-completed-container {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.report-card-inline-preview-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.report-card-preview-frame {
+  width: 100%;
+  max-width: 780px;
+}
+
+/* =========================================================
+   REPORT CARD DOCUMENT TEMPLATE & OVERLAY
+========================================================= */
+
+/* =========================================================
+   REPORT CARD DOCUMENT TEMPLATE & OVERLAY
+========================================================= */
+
+.report-card-document-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  aspect-ratio: 1786 / 2526;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.report-card-template-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.report-card-overlay-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* =========================================================
+   OVERLAY FIELDS POSITIONING (RELATIVE %)
+   Natural template: 1786 x 2526 px
+========================================================= */
+
+.report-card-field {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 6px;
+  color: #1a2538;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  font-size: clamp(8.5px, 1.15vw, 13px);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   1. STUDENT INFORMATION TABLE (4 Rows)
+   Col Left: Left: 24.47%, Width: 25.53%
+   Col Right: Left: 68.81%, Width: 25.53%
+========================================================= */
+
+/* Row 1: Student Name & Grade / Class */
+.field-student-name {
+  top: 13.30%;
+  height: 2.77%;
+  left: 24.47%;
+  width: 25.53%;
+}
+
+.field-grade-class {
+  top: 13.30%;
+  height: 2.77%;
+  left: 68.81%;
+  width: 25.53%;
+}
+
+/* Row 2: School Name & Batch Code */
+.field-school-name {
+  top: 16.11%;
+  height: 2.77%;
+  left: 24.47%;
+  width: 25.53%;
+  font-size: clamp(7.5px, 1vw, 12px);
+}
+
+.field-batch-code {
+  top: 16.11%;
+  height: 2.77%;
+  left: 68.81%;
+  width: 25.53%;
+}
+
+/* Row 3: Student ID & Course Duration */
+.field-student-id {
+  top: 18.92%;
+  height: 2.77%;
+  left: 24.47%;
+  width: 25.53%;
+}
+
+.field-course-duration {
+  top: 18.92%;
+  height: 2.77%;
+  left: 68.81%;
+  width: 25.53%;
+  font-size: clamp(7.5px, 1vw, 12px);
+}
+
+/* Row 4: Program Duration & Mode */
+.field-program-duration {
+  top: 21.73%;
+  height: 2.73%;
+  left: 24.47%;
+  width: 25.53%;
+}
+
+.field-mode {
+  top: 21.73%;
+  height: 2.73%;
+  left: 68.81%;
+  width: 25.53%;
+  font-size: clamp(7px, 0.95vw, 11px);
+}
+
+/* =========================================================
+   2. INTERNAL ASSESSMENT TABLE (Table A - Left)
+   Grade column: Left: 38.07%, Width: 10.97%
+========================================================= */
+
+.field-ia-row1-grade {
+  top: 31.63%;
+  height: 3.01%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-ia-row2-grade {
+  top: 34.68%;
+  height: 3.01%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-ia-row3-grade {
+  top: 37.73%;
+  height: 3.01%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-ia-row4-grade {
+  top: 40.78%;
+  height: 2.97%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+/* =========================================================
+   3. PRACTICAL ASSESSMENT TABLE (Table B - Right)
+   Grade column: Left: 82.87%, Width: 11.20%
+========================================================= */
+
+.field-pa-row1-grade {
+  top: 30.88%;
+  height: 2.45%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+.field-pa-row2-grade {
+  top: 33.37%;
+  height: 2.57%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+.field-pa-row3-grade {
+  top: 35.99%;
+  height: 2.57%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+.field-pa-row4-grade {
+  top: 38.60%;
+  height: 2.57%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+.field-pa-row5-grade {
+  top: 41.21%;
+  height: 2.53%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+/* =========================================================
+   4. SKILL DEVELOPMENT TABLE (Table C - Left)
+   Grade column: Left: 38.07%, Width: 10.97%
+========================================================= */
+
+.field-sd-row1-grade {
+  top: 50.48%;
+  height: 2.45%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-sd-row2-grade {
+  top: 52.97%;
+  height: 2.57%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-sd-row3-grade {
+  top: 55.58%;
+  height: 2.57%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+.field-sd-row4-grade {
+  top: 58.19%;
+  height: 2.53%;
+  left: 38.07%;
+  width: 10.97%;
+  font-weight: 600;
+}
+
+/* =========================================================
+   5. FINAL ASSESSMENT TABLE (Table D - Right)
+   Grade column: Left: 82.87%, Width: 11.20%
+========================================================= */
+
+.field-fa-theory-grade {
+  top: 52.97%;
+  height: 2.57%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+.field-fa-practical-grade {
+  top: 55.58%;
+  height: 2.57%;
+  left: 82.87%;
+  width: 11.20%;
+  font-weight: 600;
+}
+
+/* =========================================================
+   6. OVERALL GRADE BOX (Bottom Left)
+========================================================= */
+
+.field-overall-grade-box {
+  top: 66.50%;
+  height: 4.90%;
+  left: 5.82%;
+  width: 43.23%;
+  color: #00e5ff;
+  font-size: clamp(20px, 3.2vw, 36px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+}
+
+/* =========================================================
+   OFF-SCREEN PRINT TARGET (HIGH RESOLUTION CAPTURE)
+========================================================= */
+
+.report-card-hidden-render-container {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  width: 1786px;
+  height: 2526px;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.report-card-print-target {
+  width: 1786px;
+  height: 2526px;
+  background: #ffffff;
+}
+
+.report-card-document-wrapper.print-mode {
+  max-width: 1786px;
+  width: 1786px;
+  height: 2526px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.report-card-document-wrapper.print-mode .report-card-field {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.report-card-document-wrapper.print-mode .field-school-name,
+.report-card-document-wrapper.print-mode .field-course-duration {
+  font-size: 17px;
+}
+
+.report-card-document-wrapper.print-mode .field-mode {
+  font-size: 15.5px;
+}
+
+.report-card-document-wrapper.print-mode .field-ia-row1-grade,
+.report-card-document-wrapper.print-mode .field-ia-row2-grade,
+.report-card-document-wrapper.print-mode .field-ia-row3-grade,
+.report-card-document-wrapper.print-mode .field-ia-row4-grade,
+.report-card-document-wrapper.print-mode .field-pa-row1-grade,
+.report-card-document-wrapper.print-mode .field-pa-row2-grade,
+.report-card-document-wrapper.print-mode .field-pa-row3-grade,
+.report-card-document-wrapper.print-mode .field-pa-row4-grade,
+.report-card-document-wrapper.print-mode .field-pa-row5-grade,
+.report-card-document-wrapper.print-mode .field-sd-row1-grade,
+.report-card-document-wrapper.print-mode .field-sd-row2-grade,
+.report-card-document-wrapper.print-mode .field-sd-row3-grade,
+.report-card-document-wrapper.print-mode .field-sd-row4-grade,
+.report-card-document-wrapper.print-mode .field-fa-theory-grade,
+.report-card-document-wrapper.print-mode .field-fa-practical-grade {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.report-card-document-wrapper.print-mode .field-overall-grade-box {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .student-report-card-page {
+    padding: 16px;
+  }
+
+  .report-card-state-card {
+    padding: 36px 20px;
+  }
+
+  .report-card-state-title {
+    font-size: 18px;
+  }
+}
+
+
+

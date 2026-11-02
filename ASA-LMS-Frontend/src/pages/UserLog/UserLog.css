@@ -1,0 +1,134 @@
+.user-log-page-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-log-filter-card {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.user-log-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 180px;
+}
+
+.user-log-filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.user-log-select-wrapper {
+  width: 100%;
+}
+
+.user-log-date-input {
+  height: 42px;
+  background-color: rgba(15, 23, 42, 0.78);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #f8fafc;
+  padding: 0 12px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.user-log-date-input:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.08);
+}
+
+.user-log-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.user-log-btn-group {
+  display: flex;
+  align-items: center;
+  height: 42px;
+}
+
+.user-log-apply-btn {
+  height: 42px;
+  padding: 0 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.user-log-reset-wrapper {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  margin-left: auto;
+}
+
+.user-log-reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 42px;
+  padding: 0 1.1rem;
+  background-color: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-log-reset-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+@media (max-width: 768px) {
+  .user-log-page-container {
+    padding: 16px;
+  }
+
+  .user-log-filter-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .user-log-filter-group {
+    min-width: 100%;
+  }
+
+  .user-log-reset-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .user-log-reset-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

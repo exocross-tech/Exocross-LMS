@@ -1,0 +1,502 @@
+.session-review-container {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.session-review-header {
+  margin-bottom: 28px;
+}
+
+.session-review-breadcrumb {
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.session-review-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.session-review-appreciation {
+  margin-top: 14px;
+  padding: 16px 20px;
+  background: rgba(0, 229, 255, 0.04);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 12px;
+}
+
+.session-review-heading-primary {
+  margin: 0;
+  color: #00e5ff;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.session-review-subtitle {
+  margin: 6px 0 0;
+  color: #91a4c7;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.session-review-card {
+  width: 100%;
+  max-width: 100%;
+  background: #0b1222;
+  border: 1px solid #1d2a42;
+  border-radius: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.session-review-card-header {
+  padding: 22px 30px;
+  border-bottom: 1px solid #17243a;
+  background: rgba(11, 18, 34, 0.6);
+}
+
+.session-review-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.session-review-heading svg {
+  color: #00e5ff;
+  flex-shrink: 0;
+}
+
+.session-review-heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.session-review-form {
+  width: 100%;
+  padding: 28px 30px 36px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* =====================================================
+   QUESTION BLOCKS
+===================================================== */
+
+.review-question-block {
+  padding: 20px 22px;
+  background: #0d172a;
+  border: 1px solid #1a2840;
+  border-radius: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.review-question-block:hover {
+  border-color: #233758;
+}
+
+.question-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.question-title {
+  color: #e2e8f0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.required-star {
+  color: #f43f5e;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.question-subtitle-text {
+  margin: -6px 0 14px;
+  color: #94a3b8;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+/* =====================================================
+   RATING STARS
+===================================================== */
+
+.review-rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rating-star {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #475569;
+  cursor: pointer;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.rating-star svg {
+  width: 32px;
+  height: 32px;
+}
+
+.rating-star:hover:not(:disabled) {
+  color: #00e5ff;
+  transform: scale(1.15);
+}
+
+.rating-star.selected {
+  color: #00e5ff;
+}
+
+.rating-star:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.rating-star:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.rating-value-badge {
+  margin-left: 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #00e5ff;
+  background: rgba(0, 229, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+/* =====================================================
+   RECOMMENDATION RADIO OPTIONS (Question 9)
+===================================================== */
+
+.recommendation-options-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.recommendation-radio-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: #08101f;
+  border: 1px solid #1e2d48;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.recommendation-radio-card input[type="radio"] {
+  display: none;
+}
+
+.custom-radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.custom-radio-dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00e5ff;
+  transform: scale(0);
+  transition: transform 0.18s ease;
+}
+
+.recommendation-radio-card.selected {
+  background: rgba(0, 229, 255, 0.08);
+  border-color: #00e5ff;
+}
+
+.recommendation-radio-card.selected .custom-radio-dot {
+  border-color: #00e5ff;
+}
+
+.recommendation-radio-card.selected .custom-radio-dot::after {
+  transform: scale(1);
+}
+
+.radio-label-text {
+  color: #cbd5e1;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+.recommendation-radio-card.selected .radio-label-text {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* =====================================================
+   TEXTAREA (Question 10)
+===================================================== */
+
+.review-form-group {
+  position: relative;
+  width: 100%;
+}
+
+.review-form-group textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  resize: vertical;
+  background: #08101f;
+  border: 1px solid #1d2a42;
+  border-radius: 12px;
+  color: #dce6f5;
+  font-family: inherit;
+  font-size: 14.5px;
+  line-height: 1.55;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-form-group textarea::placeholder {
+  color: #64748b;
+}
+
+.review-form-group textarea:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
+}
+
+.review-form-group textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.review-character-count {
+  margin-top: 6px;
+  text-align: right;
+  color: #627493;
+  font-size: 12px;
+}
+
+/* =====================================================
+   SUBMIT SECTION
+===================================================== */
+
+.submit-section-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.submit-review-btn {
+  min-width: 180px;
+  height: 48px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #00e5ff;
+  border: none;
+  border-radius: 10px;
+  color: #03111b;
+  font-size: 15.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-review-btn:hover:not(:disabled) {
+  background: #38edff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.25);
+}
+
+.submit-review-btn:disabled {
+  background: #1e293b;
+  color: #64748b;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =====================================================
+   LOADING & COMPLETED STATES
+===================================================== */
+
+.session-review-loading {
+  padding: 50px 30px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+.session-review-completed-card {
+  padding: 60px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.session-review-completed-card h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.session-review-completed-card p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 16px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   SPINNER
+===================================================== */
+
+.review-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #03111b;
+  border-radius: 50%;
+  animation: reviewSpin 0.7s linear infinite;
+}
+
+@keyframes reviewSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE / MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  .session-review-container {
+    padding: 16px 12px 36px;
+  }
+
+  .session-review-title {
+    font-size: 26px;
+  }
+
+  .session-review-heading-primary {
+    font-size: 16px;
+  }
+
+  .session-review-subtitle {
+    font-size: 13.5px;
+  }
+
+  .session-review-card {
+    border-radius: 14px;
+  }
+
+  .session-review-card-header {
+    padding: 18px 16px;
+  }
+
+  .session-review-form {
+    padding: 18px 14px 28px;
+    gap: 20px;
+  }
+
+  .review-question-block {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .question-title {
+    font-size: 14px;
+  }
+
+  .review-rating-stars {
+    gap: 4px;
+  }
+
+  .rating-star {
+    width: 36px;
+    height: 36px;
+  }
+
+  .rating-star svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .recommendation-options-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .recommendation-radio-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+  }
+
+  .submit-review-btn {
+    width: 100%;
+  }
+}

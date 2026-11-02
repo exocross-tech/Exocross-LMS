@@ -1,0 +1,312 @@
+@import "../../pages/User-Management/UserManagement.css";
+
+.title-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-bulk-add {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-bulk-add:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+  transform: translateY(-1px);
+}
+
+.excel-file-upload-box {
+  margin-top: 0.5rem;
+  border: 2px dashed rgba(56, 189, 248, 0.4);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.5);
+  transition: border-color 0.2s ease;
+}
+
+.excel-file-upload-box:hover {
+  border-color: #38bdf8;
+}
+
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.file-upload-label span {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.file-selected-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #38bdf8;
+}
+
+.bulk-form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+/* Bulk Validation Errors Box */
+.bulk-errors-box {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.bulk-errors-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.error-title {
+  color: #f87171;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.error-subtitle {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.bulk-errors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bulk-error-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.7);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.bulk-error-row-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.bulk-error-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bulk-error-student-name {
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.bulk-error-ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: #fca5a5;
+  font-size: 0.8rem;
+}
+
+/* Bulk Preview Section */
+.bulk-preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bulk-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bulk-ready-badge {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.bulk-preview-table-wrapper {
+  overflow-y: auto;
+  max-height: 250px;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+}
+
+.bulk-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+  text-align: left;
+}
+
+.bulk-preview-table th {
+  background-color: #0f172a;
+  color: #38bdf8;
+  padding: 0.65rem 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid #1e293b;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.bulk-preview-table td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+}
+
+.grade-pill {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.btn-add-students-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.6rem 1.35rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-students-submit:hover:not(:disabled) {
+  background-color: #7dd3fc;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+.btn-add-students-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* =====================================================
+   FORM ACTION BUTTONS - FORCE RIGHT CORNER
+===================================================== */
+
+.modal-actions.right-align {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+
+  gap: 0.75rem;
+
+  margin-top: 1.5rem !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding: 0.75rem 0 0 0 !important;
+
+  /* Important if parent uses grid/flex */
+  align-self: stretch !important;
+}
+
+/* Make sure the action area itself occupies the full modal width */
+.user-form-grid + .modal-actions.right-align,
+.bulk-form-body + .modal-actions.right-align,
+.duplicates-modal-content .modal-actions.right-align {
+  width: 100% !important;
+  max-width: none !important;
+  justify-content: flex-end !important;
+}
+
+/* Buttons and wrappers should stay natural size */
+.modal-actions.right-align > *,
+.modal-actions.right-align button,
+.modal-actions.right-align > div {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* BtnClear / BtnSubmit possible wrapper */
+.modal-actions.right-align > div {
+  display: flex;
+  align-items: center;
+}
+
+/* Clear button */
+.modal-actions.right-align .btn-cancel {
+  flex: 0 0 auto !important;
+  width: auto !important;
+}
+
+/* Upload button */
+.modal-actions.right-align .btn-bulk-reupload {
+  flex: 0 0 auto !important;
+  width: auto !important;
+}

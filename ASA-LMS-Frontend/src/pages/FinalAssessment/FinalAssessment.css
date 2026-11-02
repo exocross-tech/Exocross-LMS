@@ -1,0 +1,152 @@
+/* =========================================================
+   FINAL ASSESSMENT DASHBOARD (TUTOR)
+========================================================= */
+
+.final-assessment-container {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 28px;
+  color: #f8fafc;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.fa-header-section {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.fa-section-label {
+  display: inline-block;
+  color: #00e5ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.fa-header-section h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.fa-header-section p {
+  color: #94a3b8;
+  margin-top: 7px;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   THREE THEMED ACTION CARDS (IDENTICAL THEME)
+========================================================= */
+
+.fa-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.fa-mode-card {
+  background: #0d1621;
+  border: 1px solid #263445;
+  border-radius: 14px;
+  padding: 28px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.fa-mode-card:hover {
+  transform: translateY(-2px);
+  border-color: #00e5ff;
+  box-shadow: 0 8px 28px rgba(0, 229, 255, 0.14);
+}
+
+.fa-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.fa-card-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fa-card-content {
+  flex: 1;
+}
+
+.fa-card-content h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.fa-card-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.fa-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  width: 100%;
+  background: linear-gradient(135deg, #00e5ff 0%, #00b4d8 100%);
+  color: #000000;
+  margin-top: auto;
+}
+
+.fa-mode-btn:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #00e5ff 100%);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 860px) {
+  .fa-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .final-assessment-container {
+    padding: 16px;
+  }
+
+  .fa-mode-card {
+    padding: 20px;
+  }
+}

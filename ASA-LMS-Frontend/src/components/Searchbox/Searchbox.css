@@ -1,0 +1,26 @@
+.custom-search-box {
+    position: relative;
+    background: #f4f4fb;
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 250px;
+    border: 1px solid #6c7ae0;
+}
+
+.custom-search-box input {
+    border: none;
+    background: transparent;
+    padding-left: 10px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.custom-search-box .icon {
+    color: #777;
+    font-size: 18px;
+}

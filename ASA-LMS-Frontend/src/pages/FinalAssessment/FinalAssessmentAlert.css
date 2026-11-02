@@ -1,0 +1,30 @@
+/* =========================================================
+   FINAL ASSESSMENT ALERT STYLES (MATCHING ASSESSMENT ALERT EXACTLY)
+   ========================================================= */
+
+.fa-alert-page .fa-alert-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  transition: opacity 0.2s ease;
+  width: fit-content;
+}
+
+.fa-alert-page .fa-alert-back-btn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.fa-alert-single-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}

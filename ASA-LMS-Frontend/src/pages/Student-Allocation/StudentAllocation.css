@@ -1,0 +1,1428 @@
+.bc-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bc-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bc-breadcrumb {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00f0ff;
+  text-transform: uppercase;
+}
+
+.bc-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.bc-title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bc-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.bc-subtitle {
+  font-size: 0.875rem;
+  color: #8492a6;
+  margin: 0;
+}
+
+.bc-title-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bc-btn-segregate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #121929;
+  border: 1px solid #1e2c45;
+  color: #e2e8f0;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bc-btn-segregate:hover {
+  background-color: #1a253c;
+  border-color: #00f0ff;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+}
+
+.bc-btn-commit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #00f0ff;
+  border: none;
+  color: #080d16;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+}
+
+.bc-btn-commit:hover {
+  background: #2eeaff;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.bc-panel {
+  background-color: #0a0f1d;
+  border: 1px solid #162035;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bc-enrollment-queue {
+  flex: 2.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.bc-capacity-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.bc-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/* One row = checkbox + student card */
+.bc-queue-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Checkbox stays OUTSIDE the card */
+.bc-student-checkbox {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #00f0ff;
+}
+
+.bc-student-checkbox-placeholder {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+/* Student card */
+.bc-queue-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0.85rem 1.25rem;
+  box-sizing: border-box;
+
+  background: #0b1220;
+  border: 1px solid #1a263b;
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.bc-queue-item:hover {
+  border-color: #263852;
+  background: #0d1626;
+}
+
+.bc-student-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bc-student-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.bc-student-details {
+  font-size: 0.78rem;
+  color: #718096;
+}
+
+.bc-action-cell {
+  display: flex;
+  align-items: center;
+}
+
+.bc-badge-assigned {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e1726;
+  border: 1px solid #23334d;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.95rem;
+  border-radius: 20px;
+  min-width: 85px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.bc-badge-assigned.assigned {
+  border-color: #334155;
+  color: #ffffff;
+  background-color: #0f172a;
+}
+
+.bc-badge-assigned.not-assigned {
+  border-color: #1e293b;
+  color: #64748b;
+  background-color: #080d1a;
+}
+
+.bc-select-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bc-batch-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #0e1726;
+  border: 1px solid #1a283e;
+  color: #8293ad;
+  padding: 0.4rem 2rem 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  min-width: 120px;
+  transition: all 0.2s ease;
+}
+
+.bc-batch-select:hover {
+  border-color: #00f0ff;
+  color: #ffffff;
+}
+
+.bc-batch-select:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.25);
+  color: #ffffff;
+}
+
+.bc-select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  pointer-events: none;
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.bc-select-wrapper:hover .bc-select-arrow {
+  color: #00f0ff;
+}
+
+.bc-capacity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bc-capacity-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.bc-capacity-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bc-batch-code {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.bc-count-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bc-count-text {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #8492a6;
+}
+
+.bc-delta-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #00ff88;
+}
+
+.bc-progress-bar-container {
+  height: 5px;
+  background-color: #121a2b;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bc-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00f0ff, #00d2ff);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.45);
+  transition: width 0.4s ease;
+}
+
+@media (max-width: 900px) {
+  .bc-main-content {
+    flex-direction: column;
+  }
+
+  .bc-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+/* =====================================================
+   ENROLLMENT QUEUE HEADER
+===================================================== */
+
+.bc-panel-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* LEFT SIDE */
+
+.bc-enrollment-header-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* RIGHT SIDE - PICK BATCH */
+
+.bc-pick-batch {
+  width: 260px;
+  margin-left: auto;
+}
+
+.bc-pick-batch .bc-filter-label {
+  color: #f8fafc;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* RESULT COUNT */
+
+.bc-result-count {
+  margin-top: 4px;
+}
+
+.bc-queue-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.bc-select-wrapper {
+  position: relative;
+  min-width: 230px;
+}
+
+.bc-batch-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 35px 0 14px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition: all 0.25s ease;
+}
+
+.bc-batch-select:hover,
+.bc-batch-select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+}
+
+.bc-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #94a3b8;
+}
+
+.bc-btn-commit {
+  height: 42px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.bc-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 28px 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.bc-header-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bc-breadcrumb {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00f0ff;
+  text-transform: uppercase;
+}
+
+.bc-title-row {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.bc-title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bc-title {
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  color: #ffffff;
+}
+
+.bc-subtitle {
+  margin: 0;
+
+  font-size: 14px;
+  color: #8492a6;
+}
+
+/* =====================================================
+   ASSIGN BUTTON
+===================================================== */
+
+.bc-btn-commit {
+  height: 42px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  white-space: nowrap;
+
+  background: #00f0ff;
+  border: none;
+  border-radius: 8px;
+
+  color: #080d16;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.bc-btn-commit:hover:not(:disabled) {
+  background: #2eeaff;
+
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.35);
+
+  transform: translateY(-1px);
+}
+
+.bc-btn-commit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   IMPORTANT: GRID LAYOUT
+===================================================== */
+
+.bc-main-content {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 2.2fr) minmax(280px, 1fr);
+
+  grid-template-rows: auto auto;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+/* =====================================================
+   FILTER ROW
+   FULL WIDTH ABOVE BOTH PANELS
+===================================================== */
+
+.bc-filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* =====================================================
+   FILTER GROUP
+===================================================== */
+
+.bc-filter-group {
+  width: 155px;
+}
+
+.bc-school-filter-group {
+  width: 350px;
+}
+
+/* =====================================================
+   FILTER LABELS
+===================================================== */
+
+.bc-filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 6px;
+}
+
+/* =====================================================
+   SHOW RESULTS
+===================================================== */
+
+/* =====================================================
+   PROCEED BUTTON
+===================================================== */
+
+.bc-filter-buttons {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bc-btn-show-results {
+  height: 36px;
+  min-width: 85px;
+
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #00aeff;
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: background 0.2s ease;
+}
+
+.bc-btn-show-results:hover {
+  background: #0098df;
+}
+
+.bc-btn-show-results:disabled {
+  background: #64748b;
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   PANELS
+===================================================== */
+
+.bc-panel {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  background-color: #0a0f1d;
+
+  border: 1px solid #162035;
+
+  border-radius: 14px;
+
+  padding: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =====================================================
+   ENROLLMENT QUEUE
+===================================================== */
+
+.bc-enrollment-queue {
+  grid-column: 1;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================================
+   CAPACITY PREVIEW
+===================================================== */
+
+.bc-capacity-preview {
+  grid-column: 2;
+
+  min-width: 0;
+
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================================
+   PANEL HEADER
+===================================================== */
+
+.bc-panel-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.bc-panel-title {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  text-shadow:
+    0 0 1px #ffffff,
+    0 0 2px rgba(255, 255, 255, 0.35);
+
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+}
+
+.bc-result-count {
+  margin: 6px 0 0;
+
+  color: #718096;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   BATCH SELECT
+===================================================== */
+
+.bc-queue-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-left: auto;
+}
+
+.bc-select-wrapper {
+  position: relative;
+
+  width: 230px;
+}
+
+.bc-batch-select {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 38px 0 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #334155;
+  border-radius: 10px;
+
+  background: #0f172a;
+
+  color: #f8fafc;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  outline: none;
+
+  appearance: none;
+
+  transition: all 0.25s ease;
+}
+
+.bc-batch-select:hover,
+.bc-batch-select:focus {
+  border-color: #00f0ff;
+
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
+}
+
+.bc-select-arrow {
+  position: absolute;
+
+  right: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  color: #94a3b8;
+}
+
+/* =====================================================
+   STUDENT LIST
+===================================================== */
+
+.bc-queue-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+/* =====================================================
+   STUDENT ROW
+===================================================== */
+
+.bc-queue-row {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* =====================================================
+   CHECKBOX
+===================================================== */
+
+.bc-student-checkbox {
+  width: 17px;
+  height: 17px;
+
+  margin: 0;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  accent-color: #00f0ff;
+}
+
+.bc-student-checkbox-placeholder {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   STUDENT CARD
+===================================================== */
+
+.bc-queue-item {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 72px;
+
+  padding: 14px 16px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  background: #0b1220;
+
+  border: 1px solid #1a263b;
+
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.bc-queue-item:hover {
+  border-color: #263852;
+
+  background: #0d1626;
+}
+
+/* =====================================================
+   STUDENT CONTENT
+===================================================== */
+
+.bc-student-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.bc-student-name {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bc-student-details {
+  color: #718096;
+
+  font-size: 12px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bc-student-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 2px;
+}
+
+.bc-student-school {
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+.bc-student-grade {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   ASSIGNED BADGE
+===================================================== */
+
+.bc-action-cell {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.bc-badge-assigned {
+  min-width: 85px;
+
+  padding: 8px 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  background: #0e1726;
+
+  border: 1px solid #23334d;
+
+  color: #e2e8f0;
+}
+
+.bc-badge-assigned.assigned {
+  background: #0f172a;
+
+  border-color: #334155;
+
+  color: #ffffff;
+}
+
+.bc-badge-assigned.not-assigned {
+  background: #080d1a;
+
+  border-color: #1e293b;
+
+  color: #64748b;
+}
+
+/* =====================================================
+   CAPACITY
+===================================================== */
+
+.bc-capacity-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+
+  margin-top: 20px;
+}
+
+/* ================================
+   Clickable batch card
+================================ */
+
+.bc-capacity-item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bc-capacity-item:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+/* Selected batch */
+.bc-capacity-item-selected {
+  border-color: #38bdf8;
+}
+
+.bc-capacity-labels {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bc-batch-code {
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bc-count-text {
+  color: #8492a6;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bc-progress-bar-container {
+  width: 100%;
+  height: 5px;
+
+  overflow: hidden;
+
+  background: #121a2b;
+
+  border-radius: 4px;
+}
+
+.bc-progress-bar {
+  height: 100%;
+
+  background: linear-gradient(90deg, #00f0ff, #00d2ff);
+
+  border-radius: 4px;
+
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
+
+  transition: width 0.4s ease;
+}
+
+/* =====================================================
+   REACT SELECT
+===================================================== */
+.bc-react-select {
+  font-size: 12px;
+}
+
+.bc-react-select .react-select__control {
+  min-height: 34px;
+  height: 34px;
+  border-radius: 6px;
+}
+
+.bc-grade-filter-group {
+  min-width: 175px;
+  max-width: 300px;
+  flex: 1;
+}
+
+.bc-react-select .react-select__value-container {
+  padding: 0 7px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bc-react-select .react-select__single-value {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bc-react-select .react-select__indicators {
+  height: 32px;
+}
+
+/* =====================================================
+   CAPACITY TOP TICK
+===================================================== */
+.bc-capacity-top-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bc-capacity-top-tick {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #0ea5e9;
+  /* Blue checkbox */
+  border: 2px solid #0ea5e9;
+  border-radius: 6px;
+  /* Rounded square */
+
+  color: #ffffff;
+  /* White tick */
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bc-capacity-top-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =====================================================
+   SELECTED BATCH TICK
+===================================================== */
+
+.bc-capacity-tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  margin-right: 7px;
+
+  border-radius: 4px;
+
+  background: #00aeff;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  vertical-align: middle;
+}
+
+/* =====================================================
+   SELECTED CAPACITY ITEM
+===================================================== */
+
+.bc-capacity-item-selected {
+  cursor: pointer;
+}
+
+/* =====================================================
+   BATCH CODE
+===================================================== */
+
+.bc-batch-code {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+/* =====================================================
+   REACT SELECT - BRIGHT TEXT
+===================================================== */
+
+.bc-react-select .react-select__single-value {
+  color: #ffffff !important;
+}
+
+.bc-react-select .react-select__placeholder {
+  color: #cbd5e1 !important;
+}
+
+.bc-react-select .react-select__input-container {
+  color: #ffffff !important;
+}
+
+.bc-react-select .react-select__input {
+  color: #ffffff !important;
+}
+
+.bc-react-select .react-select__menu {
+  background: #0f172a;
+}
+
+.bc-react-select .react-select__option {
+  color: #f8fafc;
+  background: #0f172a;
+}
+
+.bc-react-select .react-select__option:hover {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.bc-react-select .react-select__option--is-focused {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.bc-react-select .react-select__option--is-selected {
+  background: #00aeff;
+  color: #ffffff;
+}
+
+/* =====================================================
+   GRADE CHECKBOX OPTION
+===================================================== */
+.bc-grade-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  cursor: pointer;
+  color: #f8fafc;
+  background: #0f172a;
+  font-size: 13px;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.bc-grade-option:hover,
+.bc-grade-option--is-focused {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.bc-grade-option--is-selected {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.bc-grade-checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #00f0ff;
+  flex-shrink: 0;
+}
+
+.bc-grade-option-label {
+  flex: 1;
+}
+
+/* ============================================
+   RESULT COUNT + SELECT ALL
+============================================ */
+
+.bc-result-count-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.bc-select-all-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bc-select-all-checkbox {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #00aeff;
+}
+
+.bc-select-all-checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.bc-select-all-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #00aeff;
+  letter-spacing: 0.3px;
+}
+
+.bc-result-count {
+  margin: 0;
+}
+
+/* =====================================================
+   URL INPUT ROW
+===================================================== */
+
+.cm-url-input-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =====================================================
+   URL TEXT FIELD - BIG
+===================================================== */
+
+.cm-url-input-row input {
+  flex: 1 1 auto !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+
+  height: 42px;
+
+  padding: 0 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.035);
+  color: #ffffff;
+
+  font-size: 13px;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.cm-url-input-row input::placeholder {
+  color: #777e88;
+}
+
+.cm-url-input-row input:focus {
+  border-color: #00e5ff;
+  background: rgba(0, 229, 255, 0.025);
+}
+
+/* =====================================================
+   ADD BUTTON - SMALL
+===================================================== */
+
+.cm-url-input-row .cm-url-add-btn {
+  flex: 0 0 50px !important;
+
+  width: 50px !important;
+  min-width: 50px !important;
+  max-width: 50px !important;
+
+  height: 42px;
+
+  padding: 0 !important;
+  margin: 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #00e5ff;
+  color: #061014;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.cm-url-input-row .cm-url-add-btn:hover:not(:disabled) {
+  background: #18ebff;
+  transform: translateY(-1px);
+}
+
+.cm-url-input-row .cm-url-add-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cm-url-input-row .cm-url-add-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   URL HELP TEXT
+===================================================== */
+
+.cm-url-help {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #777e88;
+  font-size: 11px;
+}
+
+.css-1p3m7a8-multiValue {
+  visibility: hidden !important;
+}

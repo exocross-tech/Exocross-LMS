@@ -1,0 +1,865 @@
+/* =========================================================
+   STUDENT FINAL ASSESSMENT - PROFESSIONAL FORM REDESIGN
+   ========================================================= */
+
+.student-final-assessment-page {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+  color: #ffffff;
+  min-height: calc(100vh - 80px);
+}
+
+.final-assessment-main-heading {
+  margin: 7px 0 5px;
+  color: #f8fafc;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+}
+
+/* Container */
+.final-assessment-container {
+  width: 100%;
+}
+
+/* =========================================================
+   MAIN FORM CARD (Refined Width & Surfaces)
+   ========================================================= */
+
+.student-final-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(13, 20, 36, 0.98) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 18px;
+  padding: 36px 40px;
+  box-sizing: border-box;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+/* Header INSIDE the Card */
+.card-inner-header {
+  text-align: center;
+  padding: 0 0 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.card-inner-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 20px;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card-inner-subtitle {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* Title & Description Fields */
+.assessment-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assessment-field-label-bold {
+  display: block;
+  font-size: 12px;
+  font-weight: 800 !important;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: #00e5ff;
+}
+
+.assessment-title-text {
+  font-size: 19px;
+  font-weight: 700 !important;
+  color: #f8fafc;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.assessment-desc-text {
+  font-size: 15px;
+  font-weight: 600 !important;
+  color: #cbd5e1;
+  line-height: 1.6;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Completed State */
+.assessment-completed-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 6px;
+}
+
+.module-completed-btn-final {
+  height: 44px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  color: #10b981 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Divider */
+.form-section-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.12);
+  margin: 24px 0;
+}
+
+/* =========================================================
+   PROJECT EVIDENCE SECTION & 2-COLUMN GRID
+   ========================================================= */
+
+.project-evidence-section-header {
+  margin-bottom: 20px;
+}
+
+.project-evidence-title {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  font-weight: 800 !important;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: #00e5ff;
+}
+
+.project-evidence-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.project-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Single Evidence Card */
+.project-evidence-card {
+  background: rgba(17, 28, 48, 0.7);
+  border: 1px solid rgba(38, 54, 76, 0.8);
+  border-radius: 14px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.project-evidence-card:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 229, 255, 0.08);
+}
+
+.evidence-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.evidence-label {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.req-star {
+  color: #f43f5e;
+  font-weight: 800;
+}
+
+.evidence-helper-text {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Large Clickable Upload Dropzone */
+.evidence-upload-dropzone {
+  width: 100%;
+  min-height: 120px;
+  border: 1.5px dashed rgba(0, 229, 255, 0.28);
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 18px 14px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.evidence-upload-dropzone:hover {
+  border-color: #00e5ff;
+  background: rgba(0, 229, 255, 0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.15);
+}
+
+.dropzone-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.09);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.evidence-upload-dropzone:hover .dropzone-icon-box {
+  transform: scale(1.08);
+  border-color: #00e5ff;
+}
+
+.dropzone-main-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.1px;
+}
+
+.dropzone-sub-formats {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* File Selected State (Clean, NO image preview) */
+.evidence-file-selected-box {
+  width: 100%;
+  min-height: 120px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.06);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
+  animation: assignmentFadeIn 0.3s ease-out;
+}
+
+.selected-file-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.selected-check-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.selected-file-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.selected-filename {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #f1f5f9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-filesize {
+  font-size: 11.5px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.selected-file-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 10px;
+}
+
+.btn-change-file {
+  background: transparent;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 6px;
+  color: #00e5ff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-change-file:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: #00e5ff;
+}
+
+.btn-remove-file {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-remove-file:hover {
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.12);
+}
+
+/* =========================================================
+   BOTTOM ACTIONS: CLEAR & SUBMIT
+   ========================================================= */
+
+.form-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-form-clear {
+  padding: 10px 22px;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #26364c;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-form-clear:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.btn-form-clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: linear-gradient(135deg, #00e5ff 0%, #00a8ff 100%);
+  color: #02121f;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-form-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 22px rgba(0, 229, 255, 0.45);
+  filter: brightness(1.05);
+}
+
+.btn-form-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-action-spinner {
+  animation: assignmentSpin 0.8s linear infinite;
+}
+
+/* =========================================================
+   LOADING, RETRY & EMPTY STATE STYLES (Matches AssignmentPage)
+   ========================================================= */
+
+.assignment-empty {
+  width: 100%;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  color: #94a3b8;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.assignment-empty strong {
+  font-size: 16px;
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.assignment-empty span {
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.assignment-spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid rgba(0, 229, 255, 0.15);
+  border-top-color: #00e5ff;
+  border-radius: 50%;
+  animation: assignmentSpin 0.8s linear infinite;
+  margin-bottom: 6px;
+}
+
+.assignment-empty-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 40px;
+  animation: assignmentFadeIn 0.5s ease-out forwards;
+}
+
+.assignment-empty-card {
+  width: 100%;
+  max-width: 680px;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(13, 20, 36, 0.95) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 20px;
+  padding: 44px 36px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.assignment-empty-card::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, rgba(0, 229, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.assignment-empty-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  color: #00e5ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  margin-bottom: 24px;
+}
+
+.assignment-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff;
+  animation: assignmentPulse 2s infinite ease-in-out;
+}
+
+.assignment-empty-icon-box {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assignment-empty-icon-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 26px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.25) 0%, rgba(0, 168, 255, 0.05) 70%);
+  filter: blur(8px);
+  animation: assignmentGlowPulse 3s ease-in-out infinite alternate;
+}
+
+.assignment-empty-icon-inner {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #16243b 0%, #0d1727 100%);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: assignmentFloat 4s ease-in-out infinite;
+}
+
+.assignment-empty-main-icon {
+  color: #00e5ff;
+  filter: drop-shadow(0 2px 8px rgba(0, 229, 255, 0.4));
+}
+
+.assignment-empty-check-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #00e5ff;
+  color: #02121f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.4);
+  border: 2px solid #0f172a;
+}
+
+.assignment-empty-title {
+  margin: 0 0 10px 0;
+  color: #f8fafc;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.assignment-empty-description {
+  margin: 0 0 28px 0;
+  max-width: 480px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.assignment-empty-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.12) 0%, rgba(0, 168, 255, 0.12) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.assignment-empty-refresh-btn:hover {
+  background: linear-gradient(135deg, #00e5ff 0%, #00a8ff 100%);
+  color: #02121f;
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.assignment-empty-refresh-btn:hover svg {
+  transform: rotate(180deg);
+  transition: transform 0.4s ease;
+}
+
+.assignment-empty-refresh-btn:active {
+  transform: translateY(0);
+}
+
+.assignment-empty-tips-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.assignment-empty-tip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.assignment-empty-tip-card:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(0, 229, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.assignment-tip-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.assignment-tip-text strong {
+  display: block;
+  color: #f1f5f9;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.assignment-tip-text span {
+  display: block;
+  color: #64748b;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
+
+@keyframes assignmentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes assignmentPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes assignmentGlowPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes assignmentFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes assignmentSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (Matches AssignmentPage)
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .student-final-card {
+    padding: 30px 24px;
+  }
+
+  .project-evidence-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-final-assessment-page {
+    padding: 16px;
+  }
+
+  .student-final-card {
+    padding: 24px 16px;
+    border-radius: 14px;
+  }
+
+  .project-evidence-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form-button-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-form-clear,
+  .btn-form-submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .assignment-empty-card {
+    padding: 28px 16px;
+    border-radius: 16px;
+  }
+
+  .assignment-empty-tips-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+}
+
+/* =========================================================
+   THEORY FINAL ASSESSMENT SPECIFIC STYLES
+   ========================================================= */
+
+.fa-type-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  color: #00e5ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.fa-theory-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.btn-start-theory-exam {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #00e5ff 0%, #0284c7 100%);
+  color: #041019;
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-start-theory-exam:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(0, 229, 255, 0.45);
+}
+

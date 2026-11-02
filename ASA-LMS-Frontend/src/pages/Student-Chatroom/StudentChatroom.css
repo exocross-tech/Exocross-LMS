@@ -1,0 +1,423 @@
+.student-chatroom-page {
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 28px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+.student-chatroom-header {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.student-chatroom-header .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #00e5ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.student-chatroom-header .live-dot {
+  animation: pulseGlow 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.student-chatroom-header .header-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.student-chatroom-header .header-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.student-chatroom-header .header-main-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.student-chatroom-header .header-subtitle {
+  margin: 8px 0 0 0;
+  color: #8ea4bf;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 750px;
+}
+
+/* ==========================================================================
+   DIRECT CHATROOM INTERFACE (NO CARDS / NO MODAL)
+   ========================================================================== */
+.student-direct-chat-container {
+  width: 100%;
+  height: calc(100vh - 230px);
+  min-height: 520px;
+  background: #0b132b;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 229, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.direct-chat-loading,
+.direct-chat-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  color: #94a3b8;
+  text-align: center;
+  gap: 12px;
+}
+
+.direct-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 26px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chat-batch-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-title-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-batch-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.live-roster-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #00e5ff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.live-roster-pill.connected {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+
+.live-roster-pill.connected .dot-pulse {
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.live-roster-pill.disconnected {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #f59e0b;
+}
+
+.live-roster-pill.disconnected .dot-pulse {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+.dot-pulse {
+  width: 7px;
+  height: 7px;
+  background-color: #00e5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+.chat-batch-sub {
+  margin: 4px 0 0 0;
+  color: #94a3b8;
+  font-size: 0.84rem;
+}
+
+.tutor-name-highlight {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.direct-chat-body {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: radial-gradient(circle at top right, rgba(0, 229, 255, 0.03) 0%, transparent 60%);
+}
+
+.direct-empty-msgs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #94a3b8;
+  text-align: center;
+  gap: 10px;
+}
+
+.direct-empty-msgs p {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.direct-empty-msgs span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   MESSAGES BUBBLES
+   ========================================================================== */
+.student-msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 80%;
+}
+
+.student-msg-row.self {
+  align-self: flex-end;
+  flex-direction: row;
+}
+
+.student-msg-row.other {
+  align-self: flex-start;
+}
+
+.msg-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #38bdf8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.msg-avatar-circle.self {
+  background: linear-gradient(135deg, #0284c7 0%, #00e5ff 100%);
+  color: #001018;
+  border: none;
+}
+
+.msg-avatar-circle.tutor {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  color: #ffffff;
+  border: 1px solid #2dd4bf;
+}
+
+.msg-avatar-circle.admin {
+  background: #7c3aed;
+  color: #fff;
+}
+
+.msg-content-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.msg-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+}
+
+.sender-name {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.role-pill {
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+}
+
+.role-pill.tutor {
+  background: rgba(45, 212, 191, 0.2);
+  color: #2dd4bf;
+}
+
+.role-pill.admin {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+}
+
+.msg-timestamp {
+  color: #64748b;
+}
+
+.msg-text-bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.student-msg-row.other .msg-text-bubble {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  color: #f1f5f9;
+  border-bottom-left-radius: 2px;
+}
+
+.student-msg-row.self .msg-text-bubble {
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.25) 0%, rgba(0, 229, 255, 0.35) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.12);
+}
+
+/* ==========================================================================
+   INPUT FOOTER
+   ========================================================================== */
+.direct-chat-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.95);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.direct-input-field {
+  flex: 1;
+  height: 46px;
+  background: rgba(10, 18, 40, 0.85);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 12px;
+  padding: 0 18px;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.direct-input-field:focus {
+  border-color: #00e5ff;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+}
+
+.direct-send-btn {
+  height: 46px;
+  padding: 0 24px;
+  background: linear-gradient(135deg, #00e5ff 0%, #0284c7 100%);
+  border: none;
+  border-radius: 12px;
+  color: #001018;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.25);
+}
+
+.direct-send-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+}
+
+.direct-send-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .student-chatroom-page {
+    padding: 16px;
+  }
+
+  .student-chatroom-header .header-main-title {
+    font-size: 1.7rem;
+  }
+
+  .student-direct-chat-container {
+    height: calc(100vh - 180px);
+    border-radius: 14px;
+  }
+
+  .student-msg-row {
+    max-width: 90%;
+  }
+}

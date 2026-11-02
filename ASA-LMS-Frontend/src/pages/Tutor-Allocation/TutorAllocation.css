@@ -1,0 +1,1275 @@
+/* =====================================================
+   TUTOR ALLOCATION
+   MATCHES BATCH ALLOCATION THEME
+===================================================== */
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.ta-container {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.ta-header-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ta-breadcrumb {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #00f0ff;
+  text-transform: uppercase;
+}
+
+.ta-title-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.ta-title-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ta-title {
+  margin: 0;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+}
+
+.ta-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #8492a6;
+}
+
+
+/* =====================================================
+   ASSIGN BUTTON
+===================================================== */
+
+.ta-btn-commit {
+  flex: 0 0 auto;
+
+  height: 42px;
+  min-width: 105px;
+
+  padding: 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  background: #00f0ff;
+  border: none;
+  border-radius: 8px;
+
+  color: #080d16;
+  font-size: 0.85rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+}
+
+.ta-btn-commit:hover:not(:disabled) {
+  background: #2eeaff;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.ta-btn-commit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ta-btn-commit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.ta-main-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   PANEL
+===================================================== */
+
+.ta-panel {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #0a0f1d;
+  border: 1px solid #162035;
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ta-enrollment-queue {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================================
+   PANEL HEADER
+===================================================== */
+
+.ta-panel-header {
+  width: 100%;
+  min-height: 86px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+  padding: 17px 20px;
+
+  box-sizing: border-box;
+
+  background: #0a0f1d;
+  border-bottom: 1px solid #162035;
+}
+
+.ta-enrollment-header-left {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  gap: 6px;
+}
+
+.ta-panel-title {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  font-family:
+    "Orbitron",
+    "Rajdhani",
+    sans-serif;
+}
+
+
+/* =====================================================
+   RESULT COUNT + SELECT ALL
+===================================================== */
+
+.ta-result-count-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.ta-select-all-wrapper {
+  width: 17px;
+  height: 17px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.ta-select-all-checkbox {
+  width: 16px;
+  height: 16px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  accent-color: #00f0ff;
+}
+
+.ta-select-all-checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ta-result-count {
+  margin: 0;
+
+  color: #718096;
+  font-size: 0.78rem;
+}
+
+
+/* =====================================================
+   PICK BATCH
+===================================================== */
+
+.ta-pick-batch {
+  width: 260px;
+  min-width: 230px;
+  margin-left: auto;
+}
+
+.ta-react-select {
+  width: 100%;
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   REACT SELECT - CONTROL
+===================================================== */
+
+.ta-react-select .react-select__control {
+  min-height: 40px;
+  height: 40px;
+
+  background: #0e1726;
+
+  border: 1px solid #1a283e;
+  border-radius: 8px;
+
+  box-shadow: none;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.ta-react-select .react-select__control:hover {
+  border-color: #00f0ff;
+  background: #0f1929;
+}
+
+.ta-react-select .react-select__control--is-focused {
+  border-color: #00f0ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.25);
+}
+
+
+/* =====================================================
+   REACT SELECT VALUE
+===================================================== */
+
+.ta-react-select .react-select__value-container {
+  padding: 0 12px;
+}
+
+.ta-react-select .react-select__single-value {
+  color: #ffffff !important;
+  font-size: 13px;
+}
+
+.ta-react-select .react-select__placeholder {
+  color: #8492a6 !important;
+  font-size: 13px;
+}
+
+.ta-react-select .react-select__input-container {
+  color: #ffffff !important;
+  font-size: 13px;
+}
+
+.ta-react-select .react-select__input {
+  color: #ffffff !important;
+}
+
+
+/* =====================================================
+   REACT SELECT INDICATORS
+===================================================== */
+
+.ta-react-select .react-select__indicators {
+  height: 38px;
+}
+
+.ta-react-select .react-select__indicator {
+  color: #64748b;
+  padding: 8px;
+}
+
+.ta-react-select .react-select__indicator:hover {
+  color: #00f0ff;
+}
+
+.ta-react-select .react-select__clear-indicator {
+  color: #64748b;
+}
+
+.ta-react-select .react-select__clear-indicator:hover {
+  color: #ef4444;
+}
+
+.ta-react-select .react-select__dropdown-indicator {
+  color: #64748b;
+}
+
+.ta-react-select .react-select__dropdown-indicator:hover {
+  color: #00f0ff;
+}
+
+
+/* =====================================================
+   REACT SELECT MENU
+===================================================== */
+
+.ta-react-select .react-select__menu {
+  margin-top: 5px;
+
+  background: #0b1220;
+
+  border: 1px solid #1a263b;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  z-index: 100;
+}
+
+.ta-react-select .react-select__menu-list {
+  padding: 5px;
+}
+
+
+/* =====================================================
+   REACT SELECT OPTIONS
+===================================================== */
+
+.ta-react-select .react-select__option {
+  padding: 10px 12px;
+
+  background: #0b1220;
+  color: #cbd5e1;
+
+  font-size: 13px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.ta-react-select .react-select__option:hover {
+  background: #0d1626;
+  color: #ffffff;
+}
+
+.ta-react-select .react-select__option--is-focused {
+  background: #0d1626;
+  color: #ffffff;
+}
+
+.ta-react-select .react-select__option--is-selected {
+  background: #00aeff;
+  color: #ffffff;
+}
+
+.ta-react-select .react-select__option--is-selected:hover {
+  background: #18c4ff;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   QUEUE LIST
+===================================================== */
+
+.ta-queue-list {
+  width: 100%;
+
+  max-height: 650px;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  background: #0b1220;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+.ta-queue-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.ta-queue-list::-webkit-scrollbar-track {
+  background: #080d16;
+}
+
+.ta-queue-list::-webkit-scrollbar-thumb {
+  background: #1a263b;
+  border-radius: 10px;
+}
+
+.ta-queue-list::-webkit-scrollbar-thumb:hover {
+  background: #263852;
+}
+
+
+/* =====================================================
+   QUEUE ROW
+===================================================== */
+
+.ta-queue-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 10px 14px;
+
+  box-sizing: border-box;
+}
+
+.ta-queue-item {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--border-color, #263244);
+
+  border-radius: 8px;
+
+  background: var(--panel-bg, #0f172a);
+}
+
+.ta-tutor-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.ta-tutor-name {
+  margin: 0 0 5px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: var(--text-primary, #e2e8f0);
+}
+
+.ta-tutor-details {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 12px;
+
+  color: var(--text-muted, #94a3b8);
+}
+
+.ta-detail-separator {
+  opacity: 0.5;
+}
+
+.ta-tutor-checkbox {
+  width: 16px;
+  height: 16px;
+
+  cursor: pointer;
+
+  accent-color: var(
+    --accent-cyan,
+    #00e5ff
+  );
+
+  flex-shrink: 0;
+}
+
+.ta-tutor-checkbox-placeholder {
+  width: 17px;
+  height: 17px;
+
+  flex: 0 0 auto;
+}
+
+
+/* =====================================================
+   TUTOR CARD
+===================================================== */
+
+.ta-queue-item {
+  flex: 1;
+  min-width: 0;
+
+  min-height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 13px 16px;
+
+  box-sizing: border-box;
+
+  background: #0b1220;
+
+  border: 1px solid #1a263b;
+  border-radius: 10px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ta-queue-item:hover {
+  background: #0d1626;
+  border-color: #263852;
+}
+
+
+/* =====================================================
+   ROW HOVER CARD
+===================================================== */
+
+.ta-queue-row:hover .ta-queue-item {
+  background: #0d1626;
+  border-color: #263852;
+}
+
+
+/* =====================================================
+   TUTOR CONTENT
+===================================================== */
+
+.ta-tutor-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.ta-tutor-name {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ta-tutor-details {
+  color: #718096;
+
+  font-size: 0.78rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ta-detail-separator {
+  color: #475569;
+}
+
+
+/* =====================================================
+   STATUS CELL
+===================================================== */
+
+.ta-action-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  min-width: 180px;
+}
+
+.ta-role-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 90px;
+}
+
+.ta-role-label {
+  min-width: 52px;
+  text-align: right;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: var(--text-muted, #94a3b8);
+}
+
+/* =====================================================
+   STATUS BADGE
+===================================================== */
+
+.ta-badge-assigned {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 90px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  white-space: nowrap;
+}
+
+.ta-badge-assigned.assigned {
+  color: #94a3b8;
+
+  background: rgba(148, 163, 184, 0.08);
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.ta-badge-assigned.not-assigned {
+  color: #94a3b8;
+
+  background: rgba(148, 163, 184, 0.08);
+
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+/* =====================================================
+   SELECTED ROW
+===================================================== */
+
+.ta-queue-row:has(.ta-tutor-checkbox:checked) {
+  background: #0a1726;
+}
+
+.ta-queue-row:has(.ta-tutor-checkbox:checked)
+  .ta-queue-item {
+  background: #0d1c2d;
+
+  border-color: rgba(0, 240, 255, 0.35);
+
+  box-shadow:
+    0 0 10px rgba(0, 240, 255, 0.05);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.ta-empty {
+  width: 100%;
+
+  min-height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  background: #0b1220;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+  .ta-container {
+    padding: 1.5rem;
+  }
+
+  .ta-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ta-btn-commit {
+    align-self: flex-start;
+  }
+
+  .ta-panel-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ta-pick-batch {
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+  .ta-container {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .ta-title {
+    font-size: 1.55rem;
+  }
+
+  .ta-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .ta-btn-commit {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .ta-panel {
+    border-radius: 10px;
+  }
+
+  .ta-panel-header {
+    padding: 15px;
+  }
+
+  .ta-panel-title {
+    font-size: 16px;
+  }
+
+  .ta-queue-row {
+    gap: 9px;
+    padding: 10px 12px;
+  }
+
+  .ta-queue-item {
+    min-height: 64px;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 12px;
+  }
+
+  .ta-tutor-name {
+    max-width: 220px;
+  }
+
+  .ta-tutor-details {
+    max-width: 220px;
+  }
+
+  .ta-action-cell {
+    justify-content: flex-start;
+  }
+
+  .ta-badge-assigned {
+    min-width: 80px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 400px) {
+  .ta-container {
+    padding: 0.75rem;
+  }
+
+  .ta-title {
+    font-size: 1.4rem;
+  }
+
+  .ta-panel-header {
+    padding: 12px;
+  }
+
+  .ta-queue-row {
+    padding: 9px 10px;
+  }
+
+  .ta-queue-item {
+    padding: 10px;
+  }
+
+  .ta-tutor-name {
+    max-width: 180px;
+  }
+
+  .ta-tutor-details {
+    max-width: 180px;
+  }
+}
+
+/* =====================================================
+   HOST / SUPPORT TOGGLE
+===================================================== */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: var(--text-muted, #444);
+
+  transition: 0.3s;
+
+  border-radius: 20px;
+}
+
+.toggle-switch .slider::before {
+  position: absolute;
+  content: "";
+
+  height: 12px;
+  width: 12px;
+
+  left: 3px;
+  bottom: 3px;
+
+  background-color: white;
+
+  transition: 0.3s;
+
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: var(--accent-cyan, #00e5ff);
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.ta-result-count-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ta-select-all-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ta-select-all-checkbox {
+  width: 19px;
+  height: 19px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #00e5ff;
+}
+
+.ta-select-all-checkbox:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ta-select-all-label {
+  color: #8fa8c4;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ta-select-all-wrapper:hover
+  .ta-select-all-label {
+  color: #00e5ff;
+}
+
+
+/* =====================================================
+   CONFIRM ALLOCATION SWEETALERT POPUP
+===================================================== */
+
+.ta-confirm-popup {
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, #0d1527 0%, #111c33 100%) !important;
+  border: 1px solid rgba(0, 229, 255, 0.25) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(0, 229, 255, 0.1) !important;
+  padding: 28px 26px !important;
+  box-sizing: border-box !important;
+}
+
+.ta-confirm-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.ta-confirm-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.ta-confirm-modal-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 168, 255, 0.05) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.2);
+  margin-bottom: 4px;
+}
+
+.ta-confirm-modal-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+}
+
+.ta-confirm-modal-sub {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.4;
+  max-width: 420px;
+}
+
+/* Target Batch Banner */
+.ta-confirm-batch-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.ta-confirm-batch-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ta-confirm-batch-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ta-confirm-batch-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.ta-confirm-batch-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00e5ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Assigned Tutors Section */
+.ta-confirm-tutors-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ta-confirm-tutors-header {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.ta-confirm-tutor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Custom Scrollbar for tutor list */
+.ta-confirm-tutor-list::-webkit-scrollbar {
+  width: 5px;
+}
+.ta-confirm-tutor-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.25);
+  border-radius: 4px;
+}
+
+.ta-confirm-tutor-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+}
+
+.ta-confirm-tutor-card.is-host-card {
+  background: rgba(0, 229, 255, 0.06);
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+.ta-confirm-tutor-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ta-confirm-tutor-avatar.is-host-avatar {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: #00e5ff;
+}
+
+.ta-confirm-tutor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ta-confirm-tutor-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ta-confirm-tutor-email {
+  font-size: 11px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Role Pills */
+.ta-confirm-role-pill {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.ta-confirm-role-pill.role-host {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(0, 168, 255, 0.2) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #00e5ff;
+}
+
+.ta-confirm-role-pill.role-support {
+  background: rgba(51, 65, 85, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
+
+/* Custom Action Buttons */
+.ta-confirm-actions {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  margin-top: 24px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.ta-confirm-btn-primary {
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #00e5ff 0%, #00a8ff 100%);
+  border: none;
+  color: #02121f;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.ta-confirm-btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.ta-confirm-btn-primary:active {
+  transform: translateY(0);
+}
+
+.ta-confirm-btn-cancel {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 9px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ta-confirm-btn-cancel:hover {
+  background: rgba(51, 65, 85, 0.9);
+  color: #f1f5f9;
+}
