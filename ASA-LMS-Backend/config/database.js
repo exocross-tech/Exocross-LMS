@@ -65,6 +65,80 @@ const replaceTopWithLimit = (sql) => {
   return result;
 };
 
+// Balanced parenthesis parser for OUTER APPLY / CROSS APPLY -> LATERAL JOIN
+const replaceApplyWithLateral = (sql) => {
+  if (!sql || !/(?:OUTER|CROSS)\s+APPLY\s*\(/i.test(sql)) {
+    return sql || "";
+  }
+  let result = "";
+  let i = 0;
+  while (i < sql.length) {
+    const match = sql.slice(i).match(/^(OUTER|CROSS)\s+APPLY\s*\(/i);
+    if (match) {
+      const isOuter = match[1].toUpperCase() === "OUTER";
+      i += match[0].length;
+      let depth = 1;
+      let start = i;
+      while (i < sql.length && depth > 0) {
+        if (sql[i] === "(") depth++;
+        else if (sql[i] === ")") depth--;
+        i++;
+      }
+      const body = sql.slice(start, i - 1);
+      const aliasMatch = sql.slice(i).match(/^\s*([a-zA-Z0-9_]+)/);
+      let alias = "_sub";
+      if (aliasMatch) {
+        alias = aliasMatch[1];
+        i += aliasMatch[0].length;
+      }
+      if (isOuter) {
+        result += ` LEFT JOIN LATERAL (${body}) ${alias} ON TRUE `;
+      } else {
+        result += ` CROSS JOIN LATERAL (${body}) ${alias} `;
+      }
+    } else {
+      result += sql[i];
+      i++;
+    }
+  }
+  return result;
+};
+
+// Statement splitter for multi-command queries
+const splitStatements = (sql) => {
+  if (!sql) return [];
+  const stmts = [];
+  let current = "";
+  let inSingleQuote = false;
+  let inDoubleQuote = false;
+
+  for (let i = 0; i < sql.length; i++) {
+    const ch = sql[i];
+    const prev = i > 0 ? sql[i - 1] : "";
+
+    if (ch === "'" && prev !== "\\") {
+      inSingleQuote = !inSingleQuote;
+    } else if (ch === '"' && prev !== "\\") {
+      inDoubleQuote = !inDoubleQuote;
+    }
+
+    if (ch === ";" && !inSingleQuote && !inDoubleQuote) {
+      if (current.trim().length > 0) {
+        stmts.push(current.trim());
+      }
+      current = "";
+    } else {
+      current += ch;
+    }
+  }
+
+  if (current.trim().length > 0) {
+    stmts.push(current.trim());
+  }
+
+  return stmts;
+};
+
 // =====================================================
 // QUERY TRANSLATOR (T-SQL to PostgreSQL Dialect)
 // =====================================================
@@ -90,7 +164,10 @@ const translateQuery = (sqlText, inputs = {}) => {
   translated = translated.replace(/GETDATE\(\)/gi, "CURRENT_TIMESTAMP");
   translated = translated.replace(/SYSDATETIME\(\)/gi, "CURRENT_TIMESTAMP");
   translated = translated.replace(/ISNULL\(/gi, "COALESCE(");
-  translated = translated.replace(/TRY_CONVERT\s*\(\s*INT\s*,\s*([^)]+)\)/gi, "CAST($1 AS INT)");
+  translated = translated.replace(
+    /\bTRY_CONVERT\s*\(\s*INT\s*,\s*([^)]+?)\s*\)/gi,
+    (m, p1) => `(CASE WHEN (${p1})::text ~ '^-?[0-9]+$' THEN CAST((${p1})::text AS INT) ELSE NULL END)`
+  );
 
   // Translate NVARCHAR(MAX) and NVARCHAR(len) to TEXT for PostgreSQL
   translated = translated.replace(/\bNVARCHAR\s*\(\s*(?:MAX|\d+)\s*\)/gi, "TEXT");
@@ -104,7 +181,17 @@ const translateQuery = (sqlText, inputs = {}) => {
   translated = translated.replace(/\bDATEADD\s*\(\s*(second|minute|hour|day|month|year|week)\s*,/gi, "DATEADD('$1',");
   translated = translated.replace(/\bDATEDIFF\s*\(\s*(second|minute|hour|day|month|year|week)\s*,/gi, "DATEDIFF('$1',");
 
-  // CONVERT(VARCHAR(5), ..., 108) -> TO_CHAR(..., 'HH24:MI')
+  // Specialized class time formatting
+  translated = translated.replace(
+    /CONVERT\s*\(\s*VARCHAR\s*\(\s*\d+\s*\)\s*,\s*DATEADD\s*\(\s*(?:'hour'|hour)\s*,\s*(\d+)\s*,\s*CAST\s*\(\s*([a-zA-Z0-9_.]*CLASS_TIME)\s+AS\s+DATETIME\s*\)\s*\)\s*,\s*108\s*\)/gi,
+    "TO_CHAR($2 + INTERVAL '$1 hour', 'HH24:MI')"
+  );
+  translated = translated.replace(
+    /CONVERT\s*\(\s*VARCHAR\s*\(\s*5\s*\)\s*,\s*([a-zA-Z0-9_.]*CLASS_TIME)\s*,\s*108\s*\)/gi,
+    "TO_CHAR($1, 'HH24:MI')"
+  );
+
+  // General CONVERT(VARCHAR(5), ..., 108) -> TO_CHAR(..., 'HH24:MI')
   translated = translated.replace(/CONVERT\s*\(\s*VARCHAR\s*\(\s*5\s*\)\s*,\s*([^,]+?)\s*,\s*108\s*\)/gi, "TO_CHAR($1, 'HH24:MI')");
   translated = translated.replace(/CONVERT\s*\(\s*VARCHAR\s*\(\s*\d+\s*\)\s*,\s*([^,]+?)\s*,\s*108\s*\)/gi, "TO_CHAR($1, 'HH24:MI:SS')");
   translated = translated.replace(/CONVERT\s*\(\s*VARCHAR\s*\(\s*\d+\s*\)\s*,\s*([^)]+?)\s*\)/gi, "CAST($1 AS VARCHAR)");
@@ -118,39 +205,53 @@ const translateQuery = (sqlText, inputs = {}) => {
   // 6. Translate DATENAME (e.g. DATENAME(dw, ...) -> DATENAME('dw', ...))
   translated = translated.replace(/\bDATENAME\s*\(\s*([a-zA-Z]+)\s*,/gi, "DATENAME('$1',");
 
-  // 7. Translate OPENJSON on TUTOR_IDS with WITH clause
+  // 7. Translate OPENJSON on TUTOR_IDS with WITH clause (both in FROM and CROSS APPLY)
   translated = translated.replace(
-    /(?:CROSS\s+APPLY\s+)?OPENJSON\s*\(\s*(?:COALESCE|ISNULL)?\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)[\s\S]*?\)\s*\)\s*WITH\s*\([\s\S]*?\)\s*([a-zA-Z0-9_]+)/gi,
-    `CROSS JOIN LATERAL (
+    /(CROSS\s+APPLY\s+|FROM\s+)OPENJSON\s*\(\s*(?:COALESCE|ISNULL)?\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)[\s\S]*?\)\s*\)\s*WITH\s*\([\s\S]*?\)(?:\s+AS)?(?:\s+([a-zA-Z0-9_]+))?/gi,
+    (match, prefix, col, alias) => {
+      const isCross = prefix.toUpperCase().includes("CROSS");
+      const joinPrefix = isCross ? "CROSS JOIN LATERAL " : "FROM ";
+      const isKeyword = alias && ["WHERE", "ORDER", "GROUP", "HAVING", "LIMIT", "LEFT", "RIGHT", "INNER", "JOIN"].includes(alias.toUpperCase());
+      const finalAlias = (alias && !isKeyword) ? alias : "_oj";
+      const trailing = (alias && isKeyword) ? ` ${alias}` : "";
+      return `${joinPrefix}(
       SELECT
         COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS tutorid,
         COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS "tutorId",
         COALESCE(elem->>'role', elem->>'ROLE') AS role
       FROM jsonb_array_elements(
         CASE
-          WHEN $1 IS NOT NULL AND jsonb_typeof($1::jsonb) = 'array'
-          THEN $1::jsonb
+          WHEN ${col} IS NOT NULL AND jsonb_typeof(${col}::jsonb) = 'array'
+          THEN ${col}::jsonb
           ELSE '[]'::jsonb
         END
       ) elem
-    ) $2`
+    ) ${finalAlias}${trailing}`;
+    }
   );
 
   translated = translated.replace(
-    /(?:CROSS\s+APPLY\s+)?OPENJSON\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)\s*\)\s*WITH\s*\([\s\S]*?\)\s*([a-zA-Z0-9_]+)/gi,
-    `CROSS JOIN LATERAL (
+    /(CROSS\s+APPLY\s+|FROM\s+)OPENJSON\s*\(\s*([a-zA-Z0-9_.]*TUTOR_IDS)\s*\)\s*WITH\s*\([\s\S]*?\)(?:\s+AS)?(?:\s+([a-zA-Z0-9_]+))?/gi,
+    (match, prefix, col, alias) => {
+      const isCross = prefix.toUpperCase().includes("CROSS");
+      const joinPrefix = isCross ? "CROSS JOIN LATERAL " : "FROM ";
+      const isKeyword = alias && ["WHERE", "ORDER", "GROUP", "HAVING", "LIMIT", "LEFT", "RIGHT", "INNER", "JOIN"].includes(alias.toUpperCase());
+      const finalAlias = (alias && !isKeyword) ? alias : "_oj";
+      const trailing = (alias && isKeyword) ? ` ${alias}` : "";
+      return `${joinPrefix}(
       SELECT
         COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS tutorid,
         COALESCE(elem->>'tutorId', elem->>'TUTOR_ID')::int AS "tutorId",
         COALESCE(elem->>'role', elem->>'ROLE') AS role
       FROM jsonb_array_elements(
         CASE
-          WHEN $1 IS NOT NULL AND jsonb_typeof($1::jsonb) = 'array'
-          THEN $1::jsonb
+          WHEN ${col} IS NOT NULL AND jsonb_typeof(${col}::jsonb) = 'array'
+          THEN ${col}::jsonb
           ELSE '[]'::jsonb
         END
       ) elem
-    ) $2`
+    ) ${finalAlias}${trailing}`;
+    }
   );
 
   // Fallback for any other OPENJSON WITH clause
@@ -159,8 +260,8 @@ const translateQuery = (sqlText, inputs = {}) => {
     `CROSS JOIN LATERAL OPENJSON($1) $2`
   );
 
-  // 8. Translate general CROSS APPLY and OUTER APPLY
-  translated = translated.replace(/\bOUTER\s+APPLY\s*\(\s*([\s\S]*?)\)\s*([a-zA-Z0-9_]+)/gi, "LEFT JOIN LATERAL ($1) $2 ON TRUE");
+  // 8. Balanced parser for OUTER APPLY / CROSS APPLY
+  translated = replaceApplyWithLateral(translated);
   translated = translated.replace(/\bOUTER\s+APPLY\s+/gi, "LEFT JOIN LATERAL ");
   translated = translated.replace(/\bCROSS\s+APPLY\s+/gi, "CROSS JOIN LATERAL ");
 
@@ -217,13 +318,53 @@ class SupabaseRequest {
 
   async query(sqlText) {
     const { query, values } = translateQuery(sqlText, this.parameters);
+    const statements = splitStatements(query);
     try {
-      const res = await this.client.query(query, values);
-      const upperRecords = normalizeRecords(res.rows);
+      if (statements.length <= 1) {
+        const stmt = statements[0] || query;
+        const res = await this.client.query(stmt, values);
+        const upperRecords = normalizeRecords(res.rows);
+        return {
+          recordset: upperRecords,
+          recordsets: [upperRecords],
+          rowsAffected: [res.rowCount || 0],
+          output: {},
+        };
+      }
+
+      // Multi-statement execution (sequential execution inside transaction)
+      let totalRowCount = 0;
+      const allRecords = [];
+      const isPool = typeof this.client.connect === "function";
+      const conn = isPool ? await this.client.connect() : this.client;
+      const shouldManageTx = isPool;
+
+      try {
+        if (shouldManageTx) await conn.query("BEGIN");
+        for (const stmt of statements) {
+          const res = await conn.query(stmt, values);
+          totalRowCount += res.rowCount || 0;
+          allRecords.push(normalizeRecords(res.rows || []));
+        }
+        if (shouldManageTx) await conn.query("COMMIT");
+      } catch (multiErr) {
+        if (shouldManageTx) {
+          try {
+            await conn.query("ROLLBACK");
+          } catch (_) {}
+        }
+        throw multiErr;
+      } finally {
+        if (shouldManageTx) {
+          conn.release();
+        }
+      }
+
+      const finalRows = allRecords.length > 0 ? allRecords[allRecords.length - 1] : [];
       return {
-        recordset: upperRecords,
-        recordsets: [upperRecords],
-        rowsAffected: [res.rowCount || 0],
+        recordset: finalRows,
+        recordsets: allRecords,
+        rowsAffected: [totalRowCount],
         output: {},
       };
     } catch (err) {
