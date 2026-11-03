@@ -295,7 +295,13 @@ const normalizeRecords = (rows) => {
     if (!row || typeof row !== "object") return row;
     const normalized = {};
     for (const [k, v] of Object.entries(row)) {
-      normalized[k.toUpperCase()] = v;
+      // In MSSQL, JSON/array columns were returned as raw JSON strings.
+      // If PostgreSQL pg driver auto-parsed an object or array, convert to JSON string so existing JSON.parse() calls work identically!
+      if (v !== null && typeof v === "object" && !(v instanceof Date) && !Buffer.isBuffer(v)) {
+        normalized[k.toUpperCase()] = JSON.stringify(v);
+      } else {
+        normalized[k.toUpperCase()] = v;
+      }
     }
     return normalized;
   });
