@@ -18,6 +18,8 @@ import {
   CheckCircle2,
   AlertCircle,
   ShieldCheck,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 const Header = ({ onToggleSidebar }) => {
